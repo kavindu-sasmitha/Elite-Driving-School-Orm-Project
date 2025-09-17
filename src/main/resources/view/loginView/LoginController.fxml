@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.LoginController">
+    <children>
+        <!-- Background with gradient -->
+        <Rectangle height="500.0" width="700.0">
+            <fill>
+                <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
+                    <stops>
+                        <Stop color="#81ecec" offset="0.0" />
+                        <Stop color="#ff7675" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+
+        <!-- Main content container -->
+        <VBox alignment="CENTER" layoutX="100.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" spacing="30.0">
+            <!-- Header section -->
+            <VBox alignment="CENTER" spacing="15.0">
+                <Label prefHeight="64.0" prefWidth="556.0" style="-fx-text-fill: #2d3436; -fx-background-color: linear-gradient(to right, #ff6b6b, #ffeaa7); -fx-background-radius: 10; -fx-padding: 8 20;" text="Elite Driving School">
+                    <font>
+                        <Font name="Arial Bold" size="48.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="rgba(0,0,0,0.3)" offsetX="2.0" offsetY="2.0" radius="6.0" />
+                    </effect>
+                </Label>
+                <Label style="-fx-text-fill: #2d3436;" text="Sign in to your account">
+                    <font>
+                        <Font name="System Italic" size="20.0" />
+                    </font>
+                </Label>
+            </VBox>
+
+            <!-- Form container with shadow -->
+            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);">
+                <!-- Role selection -->
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
+                    <Label fx:id="lblRole" style="-fx-text-fill: #2d3436;" text="Role">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Label>
+                    <ComboBox fx:id="cmbRole" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 5; -fx-font-size: 14px;" />
+                </HBox>
+
+                <!-- Username field -->
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
+                    <Label style="-fx-text-fill: #2d3436;" text="Username">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="txtUserName" prefHeight="40.0" prefWidth="250.0" promptText="Enter your username" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
+                </HBox>
+
+                <!-- Password field -->
+                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
+                    <Label style="-fx-text-fill: #2d3436;" text="Password">
+                        <font>
+                            <Font name="System Bold" size="16.0" />
+                        </font>
+                    </Label>
+                    <PasswordField fx:id="TxtPassword" prefHeight="40.0" prefWidth="250.0" promptText="Enter your password" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
+                </HBox>
+
+                <!-- Login button -->
+                <Button fx:id="btnButton" mnemonicParsing="false" onAction="#btnLoginOnAction" style="-fx-background-color: linear-gradient(to right, #0984e3, #74b9ff); -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 12 30; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 16px;" text="Login">
+                    <effect>
+                        <DropShadow color="rgba(0,0,0,0.3)" offsetX="0.0" offsetY="3.0" radius="8.0" />
+                    </effect>
+                </Button>
+            </VBox>
+
+            <!-- Footer section -->
+            <Label fx:id="forogotPasssword" prefHeight="26.0" prefWidth="211.0" style="-fx-text-fill: #e17055; -fx-cursor: hand;" text="Forgot your password?">
+                <font>
+                    <Font name="System" size="16.0" />
+                </font>
+                <underline>true</underline>
+            </Label>
+        </VBox>
+    </children>
+</AnchorPane>

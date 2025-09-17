@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom right, #55efc4, #ff7675);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.ManageStudentController">
+    <children>
+        <!-- Header with gradient background -->
+        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" height="100.0" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+            <effect>
+                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+            </effect>
+        </Rectangle>
+
+        <Label layoutX="462.0" layoutY="36.0" text="STUDENT MANAGEMENT" textFill="#ffffff">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+            <style>
+                -fx-background-color: linear-gradient(to right, #ff6b6b, #ffeaa7);
+                -fx-padding: 8 20;
+                -fx-background-radius: 10;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+            </style>
+        </Label>
+
+        <!-- Content Container -->
+        <VBox layoutX="50.0" layoutY="120.0" prefHeight="600.0" prefWidth="1100.0" spacing="25.0">
+            <children>
+                <!-- Search Panel -->
+                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1100.0" spacing="20.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+                    <children>
+                        <Label text="Search:" textFill="#2d3436">
+                            <font>
+                                <Font name="System Bold" size="16.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="txtSearch" prefHeight="40.0" prefWidth="400.0" promptText="Enter student name, ID or email" style="-fx-background-color: #ffffff; -fx-background-radius: 6; -fx-border-color: #b2bec3; -fx-border-radius: 6; -fx-padding: 0 12; -fx-font-size: 14px;" />
+                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #0984e3, #74b9ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Search">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                            </effect>
+                        </Button>
+                    </children>
+                </HBox>
+
+                <!-- Table View -->
+                <TableView fx:id="tblStudents" prefHeight="450.0" prefWidth="1100.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #b2bec3;">
+                    <columns>
+                        <TableColumn fx:id="colStudentId" prefWidth="102.0" text="ID">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                                -fx-font-size: 14px;
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="colName" prefWidth="223.0" text="Name">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                                -fx-font-size: 14px;
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="colAddress" prefWidth="218.0" text="Address">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                                -fx-font-size: 14px;
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="colContact" prefWidth="222.0" text="Contact">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                                -fx-font-size: 14px;
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="colRegDate" prefWidth="333.0" text="Registration Date">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                                -fx-font-size: 14px;
+                            </style>
+                        </TableColumn>
+                    </columns>
+                    <style>
+                        -fx-control-inner-background: #ffffff;
+                        -fx-accent: #0984e3;
+                        -fx-selection-bar: #55efc4;
+                        -fx-selection-bar-text: #2d3436;
+                        -fx-font-size: 14px;
+                    </style>
+                </TableView>
+
+                <!-- Action Buttons -->
+                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1100.0" spacing="30.0">
+                    <children>
+                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Register New">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                            </effect>
+                        </Button>
+                        <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #f1c40f, #f39c12); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Update">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                            </effect>
+                        </Button>
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Delete">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                            </effect>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Status Bar -->
+        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
+            <children>
+                <Label fx:id="lblStatus" text="Status: Ready" textFill="#ffffff">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                    <style>
+                        -fx-padding: 5 15;
+                        -fx-background-color: #00b894;
+                        -fx-background-radius: 6;
+                    </style>
+                </Label>
+                <Label fx:id="lblTotalStudents" text="Total Students: 0" textAlignment="RIGHT" textFill="#ffffff" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                    <style>
+                        -fx-padding: 5 15;
+                        -fx-background-color: #0984e3;
+                        -fx-background-radius: 6;
+                    </style>
+                    <HBox.margin>
+                        <Insets right="25.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

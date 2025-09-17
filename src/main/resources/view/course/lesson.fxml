@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom right, #a29bfe, #74b9ff);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.LessonController">
+    <children>
+        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" height="100.0" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+            <effect>
+                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+            </effect>
+        </Rectangle>
+
+        <Label layoutX="450.0" layoutY="25.0" text="LESSON MANAGEMENT" textFill="#ffffff">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+            <style>
+                -fx-background-color: linear-gradient(to right, #ff7675, #fdcb6e);
+                -fx-padding: 8 20;
+                -fx-background-radius: 10;
+                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+            </style>
+        </Label>
+
+        <VBox layoutX="50.0" layoutY="120.0" prefHeight="600.0" prefWidth="1100.0" spacing="30.0">
+            <children>
+                <VBox prefWidth="1100.0" spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+                    <children>
+                        <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 22px;" text="Lesson Details">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                        </Label>
+
+                        <HBox alignment="CENTER_LEFT" spacing="30.0">
+                            <children>
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Lesson ID">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="txtId" prefHeight="40.0" prefWidth="250.0" promptText="Auto-generated" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" editable="false" />
+                                </VBox>
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Student ID *">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="txtStudentId" prefHeight="40.0" prefWidth="250.0" promptText="Enter Student ID" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
+                                </VBox>
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Course *">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <ComboBox fx:id="cmbCourse" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="30.0">
+                            <children>
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Instructor *">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <ComboBox fx:id="cmbInstructor" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
+                                </VBox>
+
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Date *">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <DatePicker fx:id="DatePiker" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
+                                </VBox>
+
+                                <VBox prefWidth="250.0" spacing="8.0">
+                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Start Time *">
+                                        <font>
+                                            <Font size="16.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField fx:id="txtStartTime" prefHeight="40.0" prefWidth="250.0" promptText="HH:MM (24-hour format)" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER" spacing="20.0" style="-fx-padding: 15 0 0 0;">
+                            <children>
+                                <Button fx:id="btnAdd" onAction="#btnSaveOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Add">
+                                    <effect>
+                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                                    </effect>
+                                </Button>
+                                <Button fx:id="btnUpdate" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #f1c40f, #f39c12); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Update">
+                                    <effect>
+                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                                    </effect>
+                                </Button>
+                                <Button fx:id="btnDelete" onAction="#btnDeleteOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Cancel">
+                                    <effect>
+                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                                    </effect>
+                                </Button>
+                                <Button fx:id="btnReset" onAction="#btnResetOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #7f8c8d, #636e72); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Reset">
+                                    <effect>
+                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
+                                    </effect>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <VBox prefWidth="1100.0" spacing="15.0">
+                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 22px;" text="Scheduled Lessons">
+                        <font>
+                            <Font name="System Bold" size="22.0" />
+                        </font>
+                    </Label>
+
+                    <TableView fx:id="tblLesson" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #b2bec3;">
+                        <columns>
+                            <TableColumn fx:id="colID" prefWidth="100.0" text="Lesson ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="lessonId" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                            <TableColumn fx:id="colCourse" prefWidth="200.0" text="Course">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="courseName" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                            <TableColumn fx:id="colInstructor" prefWidth="150.0" text="Instructor">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="instructorName" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                            <TableColumn fx:id="colDate" prefWidth="120.0" text="Date">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="date" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                            <TableColumn fx:id="colStartTime" prefWidth="120.0" text="Start Time">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="scheduledTime" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                            <TableColumn fx:id="colStatus" prefWidth="150.0" text="Status">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="status" />
+                                </cellValueFactory>
+                                <style>
+                                    -fx-alignment: CENTER-LEFT;
+                                    -fx-text-fill: #2d3436;
+                                    -fx-background-color: #74b9ff;
+                                    -fx-font-weight: bold;
+                                    -fx-font-size: 14px;
+                                </style>
+                            </TableColumn>
+                        </columns>
+                        <style>
+                            -fx-control-inner-background: #ffffff;
+                            -fx-accent: #0984e3;
+                            -fx-selection-bar: #55efc4;
+                            -fx-selection-bar-text: #2d3436;
+                            -fx-font-size: 14px;
+                        </style>
+                    </TableView>
+                </VBox>
+            </children>
+        </VBox>
+
+        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
+            <children>
+                <Label text="Status: Ready" textFill="#ffffff">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                    <style>
+                        -fx-padding: 5 15;
+                        -fx-background-color: #00b894;
+                        -fx-background-radius: 6;
+                    </style>
+                </Label>
+                <Label fx:id="totalLessonsLbl" text="Total Lessons: 0" textAlignment="RIGHT" textFill="#ffffff" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                    <style>
+                        -fx-padding: 5 15;
+                        -fx-background-color: #0984e3;
+                        -fx-background-radius: 6;
+                    </style>
+                    <HBox.margin>
+                        <Insets right="25.0" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

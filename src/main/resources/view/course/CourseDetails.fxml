@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="854.0" prefWidth="1160.0" style="-fx-background-color: linear-gradient(to bottom right, #4facfe, #00f2fe);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.CourseDetailsController">
+    <children>
+        <VBox layoutX="29.0" layoutY="27.0" prefHeight="800.0" prefWidth="1102.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 35; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+            <children>
+                <Label text="Course Enrollment Details">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                    <style>
+                        -fx-text-fill: #2c3e50;
+                        -fx-background-color: linear-gradient(to right, #ffecd2, #fcb69f);
+                        -fx-padding: 10;
+                        -fx-background-radius: 8;
+                    </style>
+                </Label>
+                <TableView fx:id="tblCourseDetails" prefHeight="700.0" prefWidth="1042.0" style="-fx-background-color: #f1f3f5; -fx-border-color: #dfe6e9; -fx-border-radius: 8; -fx-background-radius: 8;">
+                    <columns>
+                        <TableColumn fx:id="colStudentName" prefWidth="250.0" text="Student Name">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                            </style>
+                        </TableColumn>
+                        <TableColumn fx:id="colCourseName" prefWidth="850.0" text="Enrolled Course">
+                            <style>
+                                -fx-alignment: CENTER-LEFT;
+                                -fx-text-fill: #2d3436;
+                                -fx-background-color: #74b9ff;
+                                -fx-font-weight: bold;
+                            </style>
+                        </TableColumn>
+                    </columns>
+                    <style>
+                        -fx-control-inner-background: #ffffff;
+                        -fx-accent: #0984e3;
+                        -fx-selection-bar: #55efc4;
+                        -fx-selection-bar-text: #2d3436;
+                        -fx-font-size: 14px;
+                    </style>
+                </TableView>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
