@@ -147,5 +147,6 @@ public class ManageStudentController implements Initializable {
     }
 
     public void btnClearSearch(ActionEvent actionEvent) {
+        
     }
 }
