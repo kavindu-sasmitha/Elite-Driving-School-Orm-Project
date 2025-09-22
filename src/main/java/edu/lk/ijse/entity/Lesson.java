@@ -29,5 +29,5 @@ public class Lesson {
     private Course course;
 
     private LocalDateTime scheduledTime;
-    private String status; // e.g., "SCHEDULED", "COMPLETED", "CANCELED"
+    private String status;
 }

@@ -42,7 +42,7 @@ public class RegisterStudentController {
 
     @FXML
     void registerStudent(ActionEvent event) {
-        // Basic validation
+
         if (txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() || txtAddress.getText().isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill in all required fields.").show();
             return;
@@ -52,19 +52,19 @@ public class RegisterStudentController {
         studentDto.setName(txtFirstName.getText() + " " + txtLastName.getText());
         studentDto.setAddress(txtAddress.getText());
         studentDto.setContactNumber(txtContact.getText());
-        // In a real app, email and other fields would be used too
-        studentDto.setRegistrationDate(new Date()); // Set current date as registration date
+
+        studentDto.setRegistrationDate(new Date());
 
         try {
             studentBo.registerStudent(studentDto);
             new Alert(Alert.AlertType.INFORMATION, "Student registered successfully!").show();
 
-            // Refresh the table in the ManageStudentView
+
             if (manageStudentController != null) {
                 manageStudentController.refreshTable();
             }
 
-            // Close the registration window
+
             Stage stage = (Stage) btnRegisterOnAction.getScene().getWindow();
             stage.close();
 

@@ -48,7 +48,6 @@ public class UpdateStudentController {
 
     public void initData(StudentDto student) {
         this.studentToUpdate = student;
-        // Split the full name into first and last name if possible
         String[] nameParts = student.getName().split(" ", 2);
         txtFirstName.setText(nameParts.length > 0 ? nameParts[0] : "");
         txtLastName.setText(nameParts.length > 1 ? nameParts[1] : "");
@@ -56,13 +55,9 @@ public class UpdateStudentController {
         txtRegistrationNo.setText(String.valueOf(student.getStudentId()));
         txtContact.setText(student.getContactNumber());
         txtAddress.setText(student.getAddress());
-        // You'll need to set DatePicker values. Assuming your DTO has a Date for DOB.
-        // For simplicity, I've used RegistrationDate from the DTO.
         dpRegistrationDate.setValue(student.getRegistrationDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 
-        // This assumes you have a Date of Birth in your StudentDto
-        // If not, you'll need to add it and modify the DTO and Entity classes.
-        // For now, I'll leave the DateOfBirth field blank as it doesn't seem to be in your DTO.
+
     }
 
     @FXML
@@ -72,7 +67,7 @@ public class UpdateStudentController {
             return;
         }
 
-        // Basic validation
+
         if (txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() || txtAddress.getText().isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill in all required fields.").show();
             return;
@@ -89,7 +84,7 @@ public class UpdateStudentController {
             manageStudentController.refreshTable();
         }
 
-        // Close the update window
+
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
 

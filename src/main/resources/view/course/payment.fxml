@@ -9,262 +9,358 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom right, #55efc4, #ff6b6b);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.PaymentController">
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ProgressBar?>
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.PaymentController">
     <children>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" height="100.0" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+        <!-- Background Decorative Elements -->
+        <Circle fill="#4caf50" layoutX="100.0" layoutY="200.0" opacity="0.06" radius="120.0" />
+        <Circle fill="#ff9800" layoutX="1100.0" layoutY="600.0" opacity="0.05" radius="80.0" />
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#2196f3" height="300.0" layoutX="900.0" layoutY="100.0" opacity="0.04" rotate="45.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+
+        <!-- Top Navigation Bar -->
+        <Rectangle fill="rgba(255,255,255,0.95)" height="80.0" layoutX="0.0" layoutY="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
             <effect>
-                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+                <DropShadow blurType="GAUSSIAN" color="#20000000" height="10.0" radius="8.0" spread="0.1" width="0.0" />
             </effect>
         </Rectangle>
 
-        <Label layoutX="450.0" layoutY="25.0" text="PAYMENT MANAGEMENT" textFill="#ffffff">
-            <font>
-                <Font name="System Bold" size="32.0" />
-            </font>
-            <style>
-                -fx-background-color: linear-gradient(to right, #00b894, #55efc4);
-                -fx-padding: 8 20;
-                -fx-background-radius: 10;
-                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
-            </style>
-        </Label>
-
-        <VBox layoutX="50.0" layoutY="120.0" prefHeight="600.0" prefWidth="1100.0" spacing="30.0">
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="20.0" spacing="20.0">
             <children>
-                <VBox prefWidth="1100.0" spacing="15.0">
-                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 24px;" text="Payment Records">
-                        <font>
-                            <Font name="System Bold" size="24.0" />
-                        </font>
-                    </Label>
-
-                    <TableView fx:id="paymentTbl" prefHeight="292.0" prefWidth="946.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #b2bec3;">
-                        <columns>
-                            <TableColumn fx:id="paymentIdCol" prefWidth="143.0" text="Payment ID">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="paymentId" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="studentIdCol" prefWidth="163.0" text="Student ID">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="studentId" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="studentNameCol" prefWidth="219.0" text="Student Name">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="studentName" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="amountCol" prefWidth="213.0" text="Amount (LKR)">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="amount" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="dateCol" prefWidth="150.0" text="Payment Date">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="paymentDate" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="statusCol" prefWidth="210.0" text="Status">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="status" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                        </columns>
-                        <style>
-                            -fx-control-inner-background: #ffffff;
-                            -fx-accent: #0984e3;
-                            -fx-selection-bar: #55efc4;
-                            -fx-selection-bar-text: #2d3436;
-                            -fx-font-size: 14px;
-                        </style>
-                    </TableView>
-                </VBox>
-
-                <VBox prefWidth="1100.0" spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+                <Circle fill="linear-gradient(to bottom right, #4caf50 0%, #45a049 100%)" radius="25.0">
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#40000000" height="6.0" radius="4.0" width="0.0" />
+                    </effect>
+                </Circle>
+                <VBox spacing="4.0">
                     <children>
-                        <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 22px;" text="Process Payment">
-                            <font>
-                                <Font name="System Bold" size="22.0" />
-                            </font>
-                        </Label>
-
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
-                            <children>
-                                <VBox prefWidth="350.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Search Student *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                        <ComboBox fx:id="studentIdCmb" onAction="#onStudentIdSelected" prefHeight="40.0" prefWidth="200.0" promptText="Select Student ID" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
-                                    </HBox>
-                                </VBox>
-
-                                <VBox prefWidth="350.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Student Name">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="studentNameTxt" editable="false" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
-                            <children>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Total Fee (LKR)">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="totalFeeTxt" editable="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Already Paid (LKR)">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="alreadyPaidTxt" editable="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Balance (LKR)">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="balanceTxt" editable="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
-                            <children>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Payment Amount (LKR) *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="paymentAmountTxt" onKeyReleased="#onPaymentAmountTyped" prefHeight="40.0" prefWidth="250.0" promptText="0.00" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Payment Date *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <DatePicker fx:id="paymentDateDp" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
-                                </VBox>
-                            </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER" spacing="30.0" style="-fx-padding: 20 0 0 0;">
-                            <children>
-                                <Button fx:id="processPaymentBtn" onAction="#onProcessPaymentBtn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 12 30; -fx-font-size: 16px;" text="Process Payment">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="generateReceiptBtn" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(to right, #0984e3, #74b9ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 12 30; -fx-font-size: 16px;" text="Generate Receipt">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="clearBtn" onAction="#onClearBtn" prefHeight="50.0" prefWidth="140.0" style="-fx-background-color: linear-gradient(to right, #e17055, #d63031); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 12 30; -fx-font-size: 16px;" text="Clear">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                            </children>
-                        </HBox>
+                        <Label style="-fx-text-fill: #37474f; -fx-font-size: 28px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="💳 Payment Management" />
+                        <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Process payments and manage student billing" />
                     </children>
                 </VBox>
             </children>
-        </VBox>
-
-        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
-            <children>
-                <Label fx:id="statusLbl" text="Status: Ready" textFill="#ffffff">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #00b894;
-                        -fx-background-radius: 6;
-                    </style>
-                </Label>
-                <Label fx:id="totalPaymentsLbl" text="Total Payments: 0" textAlignment="RIGHT" textFill="#ffffff" HBox.hgrow="ALWAYS">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #0984e3;
-                        -fx-background-radius: 6;
-                    </style>
-                    <HBox.margin>
-                        <Insets right="25.0" />
-                    </HBox.margin>
-                </Label>
-            </children>
         </HBox>
+
+        <!-- Main Content Area -->
+        <VBox layoutX="30.0" layoutY="100.0" prefHeight="650.0" prefWidth="1140.0" spacing="24.0">
+            <children>
+                <!-- Statistics Dashboard -->
+                <HBox spacing="16.0">
+                    <children>
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="NEVER" prefWidth="280.0">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#4caf50" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label fx:id="totalPaymentsLbl" style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Total Payments" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="280.0" />
+                                <HBox alignment="CENTER" spacing="24.0" style="-fx-padding: 12 0 0 0;">
+                                    <children>
+                                        <VBox spacing="4.0" alignment="CENTER">
+                                            <children>
+                                                <Circle fill="#4caf50" radius="6.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Completed" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="4.0" alignment="CENTER">
+                                            <children>
+                                                <Circle fill="#ff9800" radius="6.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Pending" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="NEVER" prefWidth="280.0">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#2196f3" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="Today" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Total Revenue" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="280.0" />
+                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 24px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 12 0 0 0;" text="LKR 0.00" />
+                                <ProgressBar prefHeight="8.0" progress="0.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 4; -fx-progress-color: linear-gradient(to right, #4caf50, #8bc34a); -fx-padding: 12 0 0 0;" />
+                                <HBox alignment="BASELINE_CENTER" style="-fx-padding: 8 0 0 0;">
+                                    <children>
+                                        <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Target: LKR 500,000" />
+                                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="+15.2% from last month" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#ff5722" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="This Month" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Outstanding Payments" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" />
+                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 24px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 12 0 0 0;" text="LKR 0.00" />
+                                <ProgressBar prefHeight="8.0" progress="0.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 4; -fx-progress-color: linear-gradient(to right, #ff9800, #ff5722); -fx-padding: 12 0 0 0;" />
+                                <HBox alignment="BASELINE_CENTER" style="-fx-padding: 8 0 0 0;">
+                                    <children>
+                                        <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Overdue: LKR 25,000" />
+                                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="12 students" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Payment Records Table -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Table Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Payment Records" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Label style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Total Records:" />
+                                        <Label  style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 20; -fx-padding: 6 16;" text="0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+
+                        <!-- Payment Table -->
+                        <TableView fx:id="paymentTbl" prefHeight="200.0" style="-fx-background-color: transparent; -fx-table-cell-border-color: #f0f0f0; -fx-font-family: 'Segoe UI'; -fx-font-size: 14px;">
+                            <columns>
+                                <TableColumn fx:id="paymentIdCol" minWidth="120.0" prefWidth="140.0" text="💰 Payment ID">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="paymentId" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="studentIdCol" minWidth="140.0" prefWidth="160.0" text="🆔 Student ID">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="studentId" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="studentNameCol" minWidth="200.0" prefWidth="220.0" text="👤 Student Name">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="studentName" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER_LEFT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="amountCol" minWidth="180.0" prefWidth="200.0" text="💵 Amount (LKR)">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="amount" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER_RIGHT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="dateCol" minWidth="160.0" prefWidth="180.0" text="📅 Payment Date">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="paymentDate" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="statusCol" minWidth="140.0" prefWidth="160.0" text="✅ Status">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="status" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                            </columns>
+                            <style>
+                                -fx-control-inner-background: white;
+                                -fx-accent: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%);
+                                -fx-selection-bar: linear-gradient(to bottom right, #e8f5e8 0%, #dcedc8 100%);
+                                -fx-selection-bar-text: #1b5e20;
+                                -fx-table-cell-border-color: #f5f5f5;
+                                -fx-background-color: transparent;
+                            </style>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Process Payment Form -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Form Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Process Payment" />
+                                <Region/>
+                            </children>
+                        </HBox>
+
+                        <!-- Form Content -->
+                        <VBox spacing="24.0" style="-fx-padding: 32;">
+                            <children>
+                                <!-- Student Selection Row -->
+                                <HBox spacing="24.0">
+                                    <children>
+                                        <VBox spacing="8.0" prefWidth="300.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="👤 Search Student *" />
+                                            <ComboBox fx:id="studentIdCmb" onAction="#onStudentIdSelected" prefHeight="48.0" prefWidth="300.0" promptText="Select Student ID" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox spacing="8.0" prefWidth="300.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📝 Student Name" />
+                                            <TextField fx:id="studentNameTxt" editable="false" prefHeight="48.0" prefWidth="300.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <!-- Fee Information Row -->
+                                <HBox spacing="24.0">
+                                    <children>
+                                        <VBox spacing="8.0" prefWidth="200.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="💰 Total Fee (LKR)" />
+                                            <TextField fx:id="totalFeeTxt" editable="false" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox spacing="8.0" prefWidth="200.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="✅ Already Paid (LKR)" />
+                                            <TextField fx:id="alreadyPaidTxt" editable="false" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox spacing="8.0" prefWidth="200.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="⚖️ Balance (LKR)" />
+                                            <TextField fx:id="balanceTxt" editable="false" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <!-- Payment Details Row -->
+                                <HBox spacing="24.0">
+                                    <children>
+                                        <VBox spacing="8.0" prefWidth="200.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="💵 Payment Amount (LKR) *" />
+                                            <TextField fx:id="paymentAmountTxt" onKeyReleased="#onPaymentAmountTyped" prefHeight="48.0" prefWidth="200.0" promptText="0.00" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox spacing="8.0" prefWidth="200.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📅 Payment Date *" />
+                                            <DatePicker fx:id="paymentDateDp" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #fafafa; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <!-- Action Buttons -->
+                                <HBox alignment="CENTER" spacing="16.0" style="-fx-padding: 16 0 0 0;">
+                                    <children>
+                                        <Button fx:id="processPaymentBtn" mnemonicParsing="false" onAction="#onProcessPaymentBtn" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 12, 0, 2, 6);" text="💳 Process Payment" />
+                                        <Button fx:id="generateReceiptBtn" mnemonicParsing="false" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 12, 0, 2, 6);" text="📄 Generate Receipt" />
+                                        <Button fx:id="clearBtn" mnemonicParsing="false" onAction="#onClearBtn" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" text="🔄 Clear" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Status Bar -->
+                <HBox alignment="BASELINE_CENTER" layoutX="0.0" layoutY="760.0" prefHeight="40.0" prefWidth="1200.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-padding: 0 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, -2);">
+                    <children>
+                        <HBox spacing="12.0">
+                            <children>
+                                <Circle fill="#4caf50" radius="6.0" />
+                                <VBox spacing="2.0">
+                                    <children>
+                                        <Label fx:id="statusLbl" style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="Status: Ready" />
+                                        <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="System operational - Last sync: 2 minutes ago" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox spacing="16.0">
+                            <children>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <Label  style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(76, 175, 80, 0.1); -fx-background-radius: 16; -fx-padding: 4 12;" text="Total Payments: 0" />
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>

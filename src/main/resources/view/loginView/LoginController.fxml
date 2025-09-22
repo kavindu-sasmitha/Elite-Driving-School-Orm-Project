@@ -5,96 +5,125 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.LoginController">
     <children>
-        <!-- Background with gradient -->
+        <!-- Background with subtle gradient -->
         <Rectangle height="500.0" width="700.0">
             <fill>
                 <LinearGradient endX="1.0" endY="1.0" startX="0.0" startY="0.0">
                     <stops>
-                        <Stop color="#81ecec" offset="0.0" />
-                        <Stop color="#ff7675" offset="1.0" />
+                        <Stop color="#f8f9fa" offset="0.0" />
+                        <Stop color="#e9ecef" offset="1.0" />
                     </stops>
                 </LinearGradient>
             </fill>
         </Rectangle>
 
-        <!-- Main content container -->
-        <VBox alignment="CENTER" layoutX="100.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" spacing="30.0">
-            <!-- Header section -->
-            <VBox alignment="CENTER" spacing="15.0">
-                <Label prefHeight="64.0" prefWidth="556.0" style="-fx-text-fill: #2d3436; -fx-background-color: linear-gradient(to right, #ff6b6b, #ffeaa7); -fx-background-radius: 10; -fx-padding: 8 20;" text="Elite Driving School">
-                    <font>
-                        <Font name="Arial Bold" size="48.0" />
-                    </font>
-                    <effect>
-                        <DropShadow color="rgba(0,0,0,0.3)" offsetX="2.0" offsetY="2.0" radius="6.0" />
-                    </effect>
-                </Label>
-                <Label style="-fx-text-fill: #2d3436;" text="Sign in to your account">
-                    <font>
-                        <Font name="System Italic" size="20.0" />
-                    </font>
-                </Label>
-            </VBox>
+        <!-- Decorative Background Elements -->
+        <Circle fill="#4caf50" layoutX="80.0" layoutY="120.0" opacity="0.08" radius="100.0" />
+        <Circle fill="#2196f3" layoutX="620.0" layoutY="380.0" opacity="0.06" radius="80.0" />
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#ff9800" height="150.0" layoutX="550.0" layoutY="50.0" opacity="0.04" rotate="45.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
 
-            <!-- Form container with shadow -->
-            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 15, 0, 0, 5);">
-                <!-- Role selection -->
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
-                    <Label fx:id="lblRole" style="-fx-text-fill: #2d3436;" text="Role">
-                        <font>
-                            <Font name="System Bold" size="16.0" />
-                        </font>
-                    </Label>
-                    <ComboBox fx:id="cmbRole" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 5; -fx-font-size: 14px;" />
+        <!-- Main Content Container -->
+        <VBox alignment="CENTER" layoutX="100.0" layoutY="50.0" prefHeight="400.0" prefWidth="500.0" spacing="32.0">
+            <children>
+                <!-- Header Section -->
+                <VBox alignment="CENTER" spacing="20.0">
+                    <children>
+                        <!-- Logo/Icon -->
+                        <Circle fill="linear-gradient(to bottom right, #4caf50 0%, #45a049 100%)" radius="48.0">
+                            <effect>
+                                <DropShadow blurType="GAUSSIAN" color="#40000000" height="8.0" radius="6.0" spread="0.1" width="0.0" />
+                            </effect>
+                        </Circle>
+
+                        <!-- Title -->
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="🚗 Elite Driving School" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Form Container -->
+                <VBox alignment="CENTER" prefHeight="280.0" prefWidth="420.0" spacing="24.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 32; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 24, 0, 0, 8);">
+                    <children>
+                        <!-- Form Title -->
+                        <Label style="-fx-text-fill: #37474f; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-alignment: center;" text="Welcome" />
+
+                        <!-- Role Selection -->
+                        <VBox spacing="8.0">
+                            <Label style="-fx-text-fill: #546e7a; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 4 0;" text="🎓 Role" />
+                            <ComboBox fx:id="cmbRole" prefHeight="48.0" prefWidth="356.0" promptText="Select your role" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                        </VBox>
+
+                        <!-- Username Field -->
+                        <VBox spacing="8.0">
+                            <Label style="-fx-text-fill: #546e7a; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 4 0;" text="👤 Username" />
+                            <TextField fx:id="txtUserName" prefHeight="48.0" prefWidth="356.0" promptText="Enter your username" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                        </VBox>
+
+                        <!-- Password Field -->
+                        <VBox spacing="8.0">
+                            <Label style="-fx-text-fill: #546e7a; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 4 0;" text="🔒 Password" />
+                            <PasswordField fx:id="TxtPassword" prefHeight="48.0" prefWidth="356.0" promptText="Enter your password" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                        </VBox>
+
+                        <!-- Login Button -->
+                        <Button fx:id="btnButton" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="48.0" prefWidth="356.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 16px; -fx-background-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 12, 0, 2, 6);" text="🚀 Login">
+                            <VBox.margin>
+                                <Insets top="8.0" />
+                            </VBox.margin>
+                        </Button>
+
+                        <!-- Separator -->
+                        <Separator prefWidth="356.0" style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" />
+
+                        <!-- Additional Options -->
+                        <VBox alignment="CENTER" spacing="12.0" style="-fx-padding: 16 0 0 0;">
+                            <children>
+                                <Label fx:id="forogotPasssword" style="-fx-text-fill: #e91e63; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-cursor: hand; -fx-background-color: transparent;" text="Forgot your password?" />
+                                <HBox alignment="CENTER" spacing="8.0" />
+                            </children>
+                        </VBox>
+
+                        <!-- Security Badge -->
+                        <HBox alignment="CENTER" spacing="8.0" style="-fx-padding: 16 0 0 0;">
+                            <children>
+                                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                     
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Footer -->
+                <HBox alignment="CENTER" spacing="16.0">
+                    <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                    </children>
                 </HBox>
-
-                <!-- Username field -->
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
-                    <Label style="-fx-text-fill: #2d3436;" text="Username">
-                        <font>
-                            <Font name="System Bold" size="16.0" />
-                        </font>
-                    </Label>
-                    <TextField fx:id="txtUserName" prefHeight="40.0" prefWidth="250.0" promptText="Enter your username" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                </HBox>
-
-                <!-- Password field -->
-                <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="400.0" spacing="20.0">
-                    <Label style="-fx-text-fill: #2d3436;" text="Password">
-                        <font>
-                            <Font name="System Bold" size="16.0" />
-                        </font>
-                    </Label>
-                    <PasswordField fx:id="TxtPassword" prefHeight="40.0" prefWidth="250.0" promptText="Enter your password" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                </HBox>
-
-                <!-- Login button -->
-                <Button fx:id="btnButton" mnemonicParsing="false" onAction="#btnLoginOnAction" style="-fx-background-color: linear-gradient(to right, #0984e3, #74b9ff); -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 12 30; -fx-font-weight: bold; -fx-cursor: hand; -fx-font-size: 16px;" text="Login">
-                    <effect>
-                        <DropShadow color="rgba(0,0,0,0.3)" offsetX="0.0" offsetY="3.0" radius="8.0" />
-                    </effect>
-                </Button>
-            </VBox>
-
-            <!-- Footer section -->
-            <Label fx:id="forogotPasssword" prefHeight="26.0" prefWidth="211.0" style="-fx-text-fill: #e17055; -fx-cursor: hand;" text="Forgot your password?">
-                <font>
-                    <Font name="System" size="16.0" />
-                </font>
-                <underline>true</underline>
-            </Label>
+            </children>
         </VBox>
     </children>
 </AnchorPane>

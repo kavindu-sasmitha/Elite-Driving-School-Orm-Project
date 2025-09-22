@@ -6,161 +6,323 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom right, #55efc4, #ff7675);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.ManageStudentController">
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.ProgressBar?>
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.ManageStudentController">
     <children>
-        <!-- Header with gradient background -->
-        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" height="100.0" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+        <!-- Background Decorative Elements -->
+        <Circle fill="#4caf50" layoutX="100.0" layoutY="150.0" opacity="0.05" radius="80.0" />
+        <Circle fill="#2196f3" layoutX="1100.0" layoutY="600.0" opacity="0.04" radius="60.0" />
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#ff9800" height="200.0" layoutX="900.0" layoutY="100.0" opacity="0.03" rotate="45.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="100.0" />
+
+        <!-- Top App Bar -->
+        <Rectangle fill="rgba(255,255,255,0.95)" height="64.0" layoutX="0.0" layoutY="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
             <effect>
-                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+                <DropShadow blurType="GAUSSIAN" color="#10000000" height="8.0" radius="12.0" spread="0.1" width="0.0" />
             </effect>
         </Rectangle>
 
-        <Label layoutX="462.0" layoutY="36.0" text="STUDENT MANAGEMENT" textFill="#ffffff">
-            <font>
-                <Font name="System Bold" size="32.0" />
-            </font>
-            <style>
-                -fx-background-color: linear-gradient(to right, #ff6b6b, #ffeaa7);
-                -fx-padding: 8 20;
-                -fx-background-radius: 10;
-                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
-            </style>
-        </Label>
-
-        <!-- Content Container -->
-        <VBox layoutX="50.0" layoutY="120.0" prefHeight="600.0" prefWidth="1100.0" spacing="25.0">
+        <!-- Header Content -->
+        <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="16.0" spacing="16.0">
             <children>
-                <!-- Search Panel -->
-                <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="1100.0" spacing="20.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+                <Circle fill="linear-gradient(to bottom right, #4caf50 0%, #45a049 100%)" radius="20.0">
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#40000000" height="4.0" radius="3.0" width="0.0" />
+                    </effect>
+                </Circle>
+                <VBox spacing="4.0">
                     <children>
-                        <Label text="Search:" textFill="#2d3436">
-                            <font>
-                                <Font name="System Bold" size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtSearch" prefHeight="40.0" prefWidth="400.0" promptText="Enter student name, ID or email" style="-fx-background-color: #ffffff; -fx-background-radius: 6; -fx-border-color: #b2bec3; -fx-border-radius: 6; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #0984e3, #74b9ff); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Search">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
+                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 24px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="👥 Student Management" />
+                        <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="View and manage all student records" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Main Content Container -->
+        <VBox layoutX="24.0" layoutY="80.0" prefHeight="680.0" prefWidth="1152.0" spacing="24.0">
+            <children>
+                <!-- Search & Filter Card -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Search Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa 0%, #e9ecef 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <VBox spacing="4.0" style="-fx-padding: 0 0 0 12;">
+                                    <children>
+                                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 18px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="Search Students" />
+                                        <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Find students by name, ID, email, or contact number" />
+                                    </children>
+                                </VBox>
+                                <Region HBox.hgrow="ALWAYS" />
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#btnClearSearch" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-weight: 500; -fx-font-size: 13px; -fx-background-radius: 18; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-border-radius: 18; -fx-cursor: hand; -fx-font-family: 'Segoe UI';" text="Clear" />
+                                        <Button fx:id="btnSearch" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="36.0" prefWidth="80.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 500; -fx-font-size: 13px; -fx-background-radius: 18; -fx-cursor: hand; -fx-font-family: 'Segoe UI';" text="Search" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+
+                        <!-- Search Input -->
+                        <TextField fx:id="txtSearch" prefHeight="56.0" prefWidth="1140.0" promptText="🔍 Search by name, ID, email, or phone..." style="-fx-background-color: #fafafa; -fx-text-fill: #1a1a1a; -fx-background-radius: 0 0 16 16; -fx-border-color: transparent; -fx-border-width: 0; -fx-padding: 0 24; -fx-font-size: 16px; -fx-font-family: 'Segoe UI';" />
+                    </children>
+                </VBox>
+
+                <!-- Statistics Cards -->
+                <HBox spacing="16.0">
+                    <children>
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="NEVER" prefWidth="280.0">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#4caf50" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label fx:id="lblTotalStudents" style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Total Students" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="280.0" />
+                                <HBox alignment="CENTER" spacing="24.0" style="-fx-padding: 12 0 0 0;">
+                                    <children>
+                                        <VBox spacing="4.0" alignment="CENTER">
+                                            <children>
+                                                <Circle fill="#2196f3" radius="6.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Active" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="4.0" alignment="CENTER">
+                                            <children>
+                                                <Circle fill="#ff9800" radius="6.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Inactive" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="NEVER" prefWidth="280.0">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#ff5722" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="Today" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="New Registrations" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="280.0" />
+                                <VBox spacing="8.0" style="-fx-padding: 12 0 0 0;">
+                                    <children>
+                                        <HBox spacing="8.0" alignment="CENTER_LEFT">
+                                            <children>
+                                                <Rectangle fill="#4caf50" height="8.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Completed" />
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </HBox>
+                                        <HBox spacing="8.0" alignment="CENTER_LEFT">
+                                            <children>
+                                                <Rectangle fill="#ff9800" height="8.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Pending" />
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="0" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);" HBox.hgrow="SOMETIMES">
+                            <children>
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Circle fill="#9c27b0" radius="8.0" />
+                                        <VBox spacing="2.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="This Month" />
+                                                <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="Total Registrations" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" />
+                                <ProgressBar prefHeight="8.0" progress="0.0" style="-fx-background-color: #e0e0e0; -fx-background-radius: 4; -fx-progress-color: linear-gradient(to right, #4caf50, #8bc34a); -fx-padding: 12 0 0 0;" />
+                                <HBox alignment="BASELINE_CENTER" style="-fx-padding: 8 0 0 0;">
+                                    <children>
+                                        <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="0 of 50" />
+                                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="+12.5% from last month" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
                     </children>
                 </HBox>
 
-                <!-- Table View -->
-                <TableView fx:id="tblStudents" prefHeight="450.0" prefWidth="1100.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #b2bec3;">
-                    <columns>
-                        <TableColumn fx:id="colStudentId" prefWidth="102.0" text="ID">
+                <!-- Main Table Container -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Table Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Student Records" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Label style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Total Records:" />
+                                        <Label  style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 20; -fx-padding: 6 16;" text="0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+
+                        <!-- Table View -->
+                        <TableView fx:id="tblStudents" prefHeight="400.0" prefWidth="1140.0" style="-fx-background-color: transparent; -fx-table-cell-border-color: #f0f0f0; -fx-font-family: 'Segoe UI'; -fx-font-size: 14px;">
+                            <columns>
+                                <TableColumn fx:id="colStudentId" minWidth="100.0" prefWidth="120.0" text="🆔 ID">
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colName" minWidth="200.0" prefWidth="220.0" text="👤 Name">
+                                    <style>
+                                        -fx-alignment: CENTER_LEFT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colAddress" minWidth="250.0" prefWidth="280.0" text="📍 Address">
+                                    <style>
+                                        -fx-alignment: CENTER_LEFT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colContact" minWidth="150.0" prefWidth="180.0" text="📞 Contact">
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colRegDate" minWidth="180.0" prefWidth="200.0" text="📅 Reg. Date">
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn minWidth="120.0" prefWidth="140.0" text="⚙️ Actions">
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(76,175,80,0.1), rgba(76,175,80,0.05));
+                                        -fx-text-fill: #2e7d32;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                            </columns>
                             <style>
-                                -fx-alignment: CENTER-LEFT;
-                                -fx-text-fill: #2d3436;
-                                -fx-background-color: #74b9ff;
-                                -fx-font-weight: bold;
-                                -fx-font-size: 14px;
+                                -fx-control-inner-background: white;
+                                -fx-accent: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%);
+                                -fx-selection-bar: linear-gradient(to bottom right, #e8f5e8 0%, #dcedc8 100%);
+                                -fx-selection-bar-text: #1b5e20;
+                                -fx-table-cell-border-color: #f5f5f5;
+                                -fx-background-color: transparent;
                             </style>
-                        </TableColumn>
-                        <TableColumn fx:id="colName" prefWidth="223.0" text="Name">
-                            <style>
-                                -fx-alignment: CENTER-LEFT;
-                                -fx-text-fill: #2d3436;
-                                -fx-background-color: #74b9ff;
-                                -fx-font-weight: bold;
-                                -fx-font-size: 14px;
-                            </style>
-                        </TableColumn>
-                        <TableColumn fx:id="colAddress" prefWidth="218.0" text="Address">
-                            <style>
-                                -fx-alignment: CENTER-LEFT;
-                                -fx-text-fill: #2d3436;
-                                -fx-background-color: #74b9ff;
-                                -fx-font-weight: bold;
-                                -fx-font-size: 14px;
-                            </style>
-                        </TableColumn>
-                        <TableColumn fx:id="colContact" prefWidth="222.0" text="Contact">
-                            <style>
-                                -fx-alignment: CENTER-LEFT;
-                                -fx-text-fill: #2d3436;
-                                -fx-background-color: #74b9ff;
-                                -fx-font-weight: bold;
-                                -fx-font-size: 14px;
-                            </style>
-                        </TableColumn>
-                        <TableColumn fx:id="colRegDate" prefWidth="333.0" text="Registration Date">
-                            <style>
-                                -fx-alignment: CENTER-LEFT;
-                                -fx-text-fill: #2d3436;
-                                -fx-background-color: #74b9ff;
-                                -fx-font-weight: bold;
-                                -fx-font-size: 14px;
-                            </style>
-                        </TableColumn>
-                    </columns>
-                    <style>
-                        -fx-control-inner-background: #ffffff;
-                        -fx-accent: #0984e3;
-                        -fx-selection-bar: #55efc4;
-                        -fx-selection-bar-text: #2d3436;
-                        -fx-font-size: 14px;
-                    </style>
-                </TableView>
+                        </TableView>
+                    </children>
+                </VBox>
 
                 <!-- Action Buttons -->
-                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1100.0" spacing="30.0">
+                <HBox alignment="CENTER" spacing="16.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 20 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
                     <children>
-                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="45.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Register New">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
-                        <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #f1c40f, #f39c12); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Update">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
-                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-font-size: 14px;" text="Delete">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 18px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Quick Actions" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 8, 0, 2, 4);" text="➕ Register New" />
+                        <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 8, 0, 2, 4);" text="✏️ Update" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom right, #f44336 0%, #d32f2f 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(244,67,52,0.3), 8, 0, 2, 4);" text="🗑️ Delete" />
                     </children>
                 </HBox>
             </children>
         </VBox>
 
-        <!-- Status Bar -->
-        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
+        <!-- Bottom Status Bar -->
+        <HBox alignment="BASELINE_CENTER" layoutX="0.0" layoutY="760.0" prefHeight="40.0" prefWidth="1200.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-padding: 0 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, -2);">
             <children>
-                <Label fx:id="lblStatus" text="Status: Ready" textFill="#ffffff">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #00b894;
-                        -fx-background-radius: 6;
-                    </style>
-                </Label>
-                <Label fx:id="lblTotalStudents" text="Total Students: 0" textAlignment="RIGHT" textFill="#ffffff" HBox.hgrow="ALWAYS">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #0984e3;
-                        -fx-background-radius: 6;
-                    </style>
-                    <HBox.margin>
-                        <Insets right="25.0" />
-                    </HBox.margin>
-                </Label>
+                <HBox spacing="12.0">
+                    <children>
+                        <Circle fill="#4caf50" radius="6.0" />
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label fx:id="lblStatus" style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="Ready" />
+                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="System operational - Last sync: 2 minutes ago" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox spacing="16.0">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(102, 126, 234, 0.1); -fx-background-radius: 16; -fx-padding: 4 12;" text="Total Students: 0" />
+                    </children>
+                </HBox>
             </children>
         </HBox>
     </children>

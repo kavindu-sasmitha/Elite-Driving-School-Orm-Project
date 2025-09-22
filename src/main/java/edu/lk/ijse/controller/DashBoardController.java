@@ -70,7 +70,7 @@ public class DashBoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadCounts();
+        //loadCounts();
         startClock();
         // Initially hide elements not visible to receptionists
         if ("Receptionist".equals(loggedInUserRole)) {
@@ -90,9 +90,9 @@ public class DashBoardController implements Initializable {
 
     private void loadCounts() {
         // These methods would fetch counts from your database/backend
-        lblStudentCount.setText(String.valueOf(dashBoardBo.getStudentCount()));
-        lblCourseCount.setText(String.valueOf(dashBoardBo.getCourseCount()));
-        lblInstructorCount.setText(String.valueOf(dashBoardBo.getInstructorCount()));
+        //lblStudentCount.setText(String.valueOf(dashBoardBo.getStudentCount()));
+        //lblCourseCount.setText(String.valueOf(dashBoardBo.getCourseCount()));
+      //  lblInstructorCount.setText(String.valueOf(dashBoardBo.getInstructorCount()));
     }
 
     private void startClock() {

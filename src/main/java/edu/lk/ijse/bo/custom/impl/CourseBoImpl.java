@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class CourseBoImpl implements CourseBo {
 
     private final CourseDao courseDao = new CourseDaoImpl();
-    private final EntityDtoConvertor convertor = new EntityDtoConvertor(); // Create an instance of the converter
+    private final EntityDtoConvertor convertor = new EntityDtoConvertor();
 
     @Override
     public void addCourse(CourseDto courseDto) {

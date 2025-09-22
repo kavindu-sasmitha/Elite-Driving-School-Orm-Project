@@ -22,5 +22,5 @@ public class User {
     private String password;
 
     @Column(name = "role")
-    private String role; // "Admin" or "Receptionist"
+    private String role;
 }

@@ -19,6 +19,5 @@ public class LessonTm {
     private String courseName;
     private LocalDate date;
     private LocalTime scheduledTime;
-    // Duration field has been removed
     private String status;
 }

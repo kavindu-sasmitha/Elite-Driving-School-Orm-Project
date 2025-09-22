@@ -5,130 +5,249 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancPage1" prefHeight="934.0" prefWidth="1360.0" style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #4b6584);" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.DashBoardController">
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<AnchorPane fx:id="ancPage1" prefHeight="934.0" prefWidth="1360.0" style="-fx-background-color: linear-gradient(to bottom right, #667eea 0%, #764ba2 100%);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.DashBoardController">
     <children>
-        <!-- Header Bar -->
-        <Rectangle arcHeight="12.0" arcWidth="12.0" fill="linear-gradient(to bottom, #1e272e, #353b48)" height="80.0" strokeType="INSIDE" strokeWidth="0.0" width="1360.0">
+        <!-- Top Navigation Bar -->
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.90))" height="70.0" layoutX="0.0" layoutY="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1360.0">
             <effect>
-                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.4)" height="10.0" radius="8.0" width="0.0" />
+                <DropShadow blurType="GAUSSIAN" color="#20000000" height="8.0" radius="12.0" spread="0.1" width="0.0" />
             </effect>
         </Rectangle>
 
-        <!-- System Title -->
-        <Label layoutX="220.0" layoutY="25.0" style="-fx-text-fill: #ffffff; -fx-background-color: linear-gradient(to right, #6ab04c, #badc58); -fx-background-radius: 12; -fx-padding: 10 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0, 0, 3);" text="Learning Management System">
-            <font>
-                <Font name="System Bold" size="26.0" />
-            </font>
-        </Label>
-
-        <!-- Date and Time Display -->
-        <Label fx:id="lbDateTime" layoutX="1000.0" layoutY="30.0" prefHeight="25.0" prefWidth="300.0" style="-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #e55039; -fx-background-radius: 8; -fx-padding: 6 18;" textAlignment="RIGHT" />
-
-        <!-- Left Navigation Panel -->
-        <VBox layoutX="0.0" layoutY="80.0" prefHeight="854.0" prefWidth="200.0" spacing="0.0" style="-fx-background-color: linear-gradient(to bottom, #353b48, #57606f);">
-            <padding>
-                <Insets top="20.0" />
-            </padding>
-
+        <!-- App Logo & Title -->
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="15.0" spacing="15.0">
             <children>
-                <!-- User Info Section -->
-                <VBox alignment="TOP_CENTER" spacing="15.0" style="-fx-padding: 0 0 25 0;">
+                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../photos/logo.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-text-fill: #2c3e50; -fx-font-size: 24px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';" text="Drive Academy" />
+            </children>
+        </HBox>
+
+        <!-- Date/Time Display -->
+        <Label fx:id="lbDateTime" alignment="CENTER_RIGHT" layoutX="1050.0" layoutY="20.0" prefHeight="30.0" prefWidth="260.0" style="-fx-text-fill: #5a6c7d; -fx-font-size: 14px; -fx-font-weight: 500; -fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 20; -fx-padding: 8 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0, 0, 2);" textAlignment="CENTER" />
+
+        <!-- Sidebar Navigation -->
+        <VBox layoutX="0.0" layoutY="70.0" prefHeight="864.0" prefWidth="280.0" spacing="0.0" style="-fx-background-color: rgba(255,255,255,0.95);">
+            <padding>
+                <Insets top="40.0" left="30.0" right="30.0" />
+            </padding>
+            <children>
+                <!-- User Profile Section -->
+                <VBox alignment="CENTER" prefHeight="120.0" prefWidth="220.0" spacing="15.0">
                     <children>
-                        <Label style="-fx-font-size: 40; -fx-text-fill: #ffffff;" text="👤" />
-                        <Label fx:id="lbTime" style="-fx-text-fill: #dfe4ea; -fx-font-size: 15px; -fx-font-weight: bold;" />
+                        <VBox alignment="CENTER" spacing="10.0">
+                            <children>
+                                <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e3f2fd" height="60.0" stroke="#2196f3" strokeType="OUTSIDE" strokeWidth="2.0" width="60.0" />
+                                <Label fx:id="lbTime" style="-fx-text-fill: #546e7a; -fx-font-size: 14px; -fx-font-weight: 500;" text="Welcome Back" />
+                            </children>
+                        </VBox>
+                        <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="220.0" />
                     </children>
                 </VBox>
-
-                <Separator style="-fx-background-color: #718093;" />
 
                 <!-- Navigation Menu -->
-                <VBox alignment="TOP_CENTER" prefWidth="200.0" spacing="6.0" style="-fx-padding: 25 0 0 0;">
+                <VBox alignment="CENTER_LEFT" prefWidth="220.0" spacing="8.0" style="-fx-padding: 30 0 20 0;">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#btnDashBoardOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to right, #6ab04c, #badc58); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand;" text="Dashboard">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.25)" height="6.0" radius="5.0" width="0.0" />
-                            </effect>
-                        </Button>
-                        <Button mnemonicParsing="false" onAction="#btnStudentOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Students" />
-                        <Button mnemonicParsing="false" onAction="#btnEnrollCourseOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Enroll Course" />
-                        <Button mnemonicParsing="false" onAction="#btnCourseOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Courses" />
-                        <Button mnemonicParsing="false" onAction="#btnLessonOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Lessons" />
-                        <Button mnemonicParsing="false" onAction="#btnInstructorOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Instructors" />
-                        <Button mnemonicParsing="false" onAction="#btnPaymentDetailsOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Payments" />
-                        <Button mnemonicParsing="false" onAction="#btnUserRegistrationOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Manage Users" />
-                        <Button fx:id="course_details" mnemonicParsing="false" onAction="#btnCourseDetailsOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: transparent; -fx-text-fill: #dfe4ea; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand; -fx-border-color: transparent;" text="Course Details" />
+                        <Button mnemonicParsing="false" onAction="#btnDashBoardOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 8, 0, 2, 4);" text="📊 Dashboard" />
+                        <Button mnemonicParsing="false" onAction="#btnStudentOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="👥 Students" />
+                        <Button mnemonicParsing="false" onAction="#btnEnrollCourseOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="📚 Enroll Course" />
+                        <Button mnemonicParsing="false" onAction="#btnLessonOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="📖 Lessons" />
+                        <Button mnemonicParsing="false" onAction="#btnInstructorOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="👨‍🏫 Instructors" />
+                        <Button mnemonicParsing="false" onAction="#btnPaymentDetailsOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="💳 Payments" />
+                        <Button mnemonicParsing="false" onAction="#btnUserRegistrationOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="⚙️ Manage Users" />
+                        <Button fx:id="course_details" mnemonicParsing="false" onAction="#btnCourseDetailsOnAction" prefHeight="48.0" prefWidth="220.0" style="-fx-background-color: transparent; -fx-text-fill: #757575; -fx-font-weight: 500; -fx-font-size: 14px; -fx-background-radius: 24; -fx-cursor: hand; -fx-padding: 0 20;" text="📋 Course Details" />
                     </children>
                 </VBox>
 
-                <!-- Spacer to push logout to bottom -->
+                <!-- Spacer -->
                 <VBox VBox.vgrow="ALWAYS" />
 
-                <Separator style="-fx-background-color: #718093;" />
-
-                <!-- Logout Button -->
-                <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: linear-gradient(to right, #eb3b5a, #fc5c65); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 15px; -fx-background-radius: 8; -fx-cursor: hand;" text="Logout">
-                    <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
-                    </VBox.margin>
-                    <effect>
-                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.25)" height="6.0" radius="5.0" width="0.0" />
-                    </effect>
-                </Button>
+                <!-- Logout Section -->
+                <VBox alignment="CENTER" prefHeight="80.0" prefWidth="220.0" spacing="12.0">
+                    <children>
+                        <Separator style="-fx-background-color: #e0e0e0; -fx-pref-height: 1;" prefWidth="220.0" />
+                        <Button mnemonicParsing="false" onAction="#btnLogOutOnAction" prefHeight="44.0" prefWidth="220.0" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 22; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(244,67,54,0.3), 6, 0, 2, 3);" text="🚪 Logout" />
+                    </children>
+                </VBox>
             </children>
         </VBox>
 
         <!-- Main Content Area -->
-        <AnchorPane fx:id="ancMainContainer" layoutX="200.0" layoutY="80.0" prefHeight="854.0" prefWidth="1160.0" style="-fx-background-color: #f1f2f6;" />
+        <AnchorPane fx:id="ancMainContainer" layoutX="280.0" layoutY="70.0" prefHeight="864.0" prefWidth="1080.0" style="-fx-background-color: rgba(255,255,255,0.95);" />
 
-        <!-- Welcome Panel in Main Content Area (default view) -->
-        <VBox fx:id="vbox" layoutX="220.0" layoutY="100.0" prefHeight="800.0" prefWidth="1120.0" spacing="30.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-padding: 35; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 12, 0, 0, 6);">
+        <!-- Dashboard Content -->
+        <VBox fx:id="vbox" layoutX="300.0" layoutY="90.0" prefHeight="820.0" prefWidth="1040.0" spacing="30.0" style="-fx-padding: 40;">
             <children>
-                <Label style="-fx-text-fill: #2d3436;" text="Welcome to Learning Management System">
-                    <font>
-                        <Font name="System Bold" size="30.0" />
-                    </font>
-                </Label>
-
-                <Label style="-fx-text-fill: #747d8c; -fx-font-size: 18px;" text="Manage students, courses, instructors, and more from this dashboard" />
-
-                <!-- Quick Stats Cards -->
-                <HBox alignment="TOP_CENTER" spacing="30.0">
+                <!-- Header Section -->
+                <VBox spacing="10.0">
                     <children>
-                        <!-- Students Card -->
-                        <VBox spacing="15.0" style="-fx-background-color: linear-gradient(to right, #3867d6, #4b7bec); -fx-background-radius: 12; -fx-padding: 30; -fx-pref-width: 240; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 6);">
-                            <Label fx:id="lblStudentCount" style="-fx-text-fill: white; -fx-font-size: 34px; -fx-font-weight: bold;" text="0" />
-                            <Label style="-fx-text-fill: white; -fx-font-size: 16px;" text="Students" />
+                        <Label style="-fx-text-fill: #37474f; -fx-font-size: 32px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="🚗 Drive Academy" />
+                        <Label style="-fx-text-fill: #78909c; -fx-font-size: 16px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Master the road with our comprehensive driving programs for all license types" />
+                    </children>
+                </VBox>
+
+                <!-- Course Grid -->
+                <GridPane hgap="24.0" vgap="24.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="280.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="280.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="280.0" prefWidth="300.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="380.0" prefHeight="380.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="380.0" prefHeight="380.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <!-- Course Card 1 -->
+                        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="linear-gradient(to bottom right, #667eea 0%, #764ba2 100%)" height="48.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="48.0" />
+                                        <VBox spacing="4.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 16px; -fx-font-weight: 600;" text="C1001" />
+                                                <Label style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-font-weight: 400;" text="Basic Learner Program" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-padding: 0 0 16 0;" text="Duration: 12 weeks • Beginner Level" />
+                                <Label style="-fx-text-fill: #e91e63; -fx-font-size: 24px; -fx-font-weight: 700; -fx-padding: 0 0 20 0;" text="LKR 50,000" />
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="44.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 4, 0, 2, 2);" text="🚀 Start Learning" />
+                                        <Button mnemonicParsing="false" prefHeight="44.0" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 2, 2);" text="📚 View Curriculum" />
+                                    </children>
+                                </VBox>
+                            </children>
                         </VBox>
 
-                        <!-- Courses Card -->
-                        <VBox spacing="15.0" style="-fx-background-color: linear-gradient(to right, #6ab04c, #badc58); -fx-background-radius: 12; -fx-padding: 30; -fx-pref-width: 240; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 6);">
-                            <Label fx:id="lblCourseCount" style="-fx-text-fill: white; -fx-font-size: 34px; -fx-font-weight: bold;" text="0" />
-                            <Label style="-fx-text-fill: white; -fx-font-size: 16px;" text="Courses" />
+                        <!-- Course Card 2 -->
+                        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="linear-gradient(to bottom right, #f093fb 0%, #f5576c 100%)" height="48.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="48.0" />
+                                        <VBox spacing="4.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 16px; -fx-font-weight: 600;" text="C1002" />
+                                                <Label style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-font-weight: 400;" text="Advanced Defensive Driving" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-padding: 0 0 16 0;" text="Duration: 8 weeks • Intermediate Level" />
+                                <Label style="-fx-text-fill: #e91e63; -fx-font-size: 24px; -fx-font-weight: 700; -fx-padding: 0 0 20 0;" text="LKR 65,000" />
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="44.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 4, 0, 2, 2);" text="🚀 Start Learning" />
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 2, 2);" text="📚 View Curriculum" />
+                                    </children>
+                                </VBox>
+                            </children>
                         </VBox>
 
-                        <!-- Instructors Card -->
-                        <VBox spacing="15.0" style="-fx-background-color: linear-gradient(to right, #eb3b5a, #fc5c65); -fx-background-radius: 12; -fx-padding: 30; -fx-pref-width: 240; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 6);">
-                            <Label fx:id="lblInstructorCount" style="-fx-text-fill: white; -fx-font-size: 34px; -fx-font-weight: bold;" text="0" />
-                            <Label style="-fx-text-fill: white; -fx-font-size: 16px;" text="Instructors" />
+                        <!-- Course Card 3 -->
+                        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="linear-gradient(to bottom right, #4facfe 0%, #00f2fe 100%)" height="48.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="48.0" />
+                                        <VBox spacing="4.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 16px; -fx-font-weight: 600;" text="C1003" />
+                                                <Label style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-font-weight: 400;" text="Motorcycle License Training" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-padding: 0 0 16 0;" text="Duration: 16 weeks • Specialized" />
+                                <Label style="-fx-text-fill: #e91e63; -fx-font-size: 24px; -fx-font-weight: 700; -fx-padding: 0 0 20 0;" text="LKR 75,000" />
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 4, 0, 2, 2);" text="🚀 Start Learning" />
+                                        <Button mnemonicParsing="false" prefHeight="44.0" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 2, 2);" text="📚 View Curriculum" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Course Card 4 -->
+                        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="linear-gradient(to bottom right, #fa709a 0%, #fee140 100%)" height="48.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="48.0" />
+                                        <VBox spacing="4.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 16px; -fx-font-weight: 600;" text="C1004" />
+                                                <Label style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-font-weight: 400;" text="Heavy Vehicle Training" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-padding: 0 0 16 0;" text="Duration: 6 months • Professional" />
+                                <Label style="-fx-text-fill: #e91e63; -fx-font-size: 24px; -fx-font-weight: 700; -fx-padding: 0 0 20 0;" text="LKR 150,000" />
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 4, 0, 2, 2);" text="🚀 Start Learning" />
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 2, 2);" text="📚 View Curriculum" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Course Card 5 -->
+                        <VBox style="-fx-background-color: white; -fx-background-radius: 16; -fx-padding: 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                    <children>
+                                        <Rectangle arcHeight="40.0" arcWidth="40.0" fill="linear-gradient(to bottom right, #a8edea 0%, #fed6e3 100%)" height="48.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="48.0" />
+                                        <VBox spacing="4.0">
+                                            <children>
+                                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 16px; -fx-font-weight: 600;" text="C1005" />
+                                                <Label style="-fx-text-fill: #666; -fx-font-size: 14px; -fx-font-weight: 400;" text="Refresher Driving Course" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-padding: 0 0 16 0;" text="Duration: 3 months • Refresher" />
+                                <Label style="-fx-text-fill: #e91e63; -fx-font-size: 24px; -fx-font-weight: 700; -fx-padding: 0 0 20 0;" text="LKR 30,000" />
+                                <VBox spacing="8.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 4, 0, 2, 2);" text="🚀 Start Learning" />
+                                        <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 4, 0, 2, 2);" text="📚 View Curriculum" />
+                                    </children>
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Add New Course Card -->
+                        <VBox alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa 0%, #e9ecef 100%); -fx-background-radius: 16; -fx-padding: 24; -fx-border-color: #dee2e6; -fx-border-width: 2; -fx-border-style: dashed; -fx-border-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 12, 0, 0, 4);" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <children>
+                                <Label style="-fx-text-fill: #6c757d; -fx-font-size: 48px; -fx-font-weight: 300;" text="➕" />
+                                <Label style="-fx-text-fill: #495057; -fx-font-size: 20px; -fx-font-weight: 600; -fx-padding: 0 0 20 0;" text="New Course" />
+                                <Label style="-fx-text-fill: #868e96; -fx-font-size: 14px; -fx-font-weight: 400; -fx-text-alignment: center; -fx-wrap-text: true;" text="Create a new driving course and expand your offerings" />
+                                <Button mnemonicParsing="false" prefHeight="44.0"  style="-fx-background-color: linear-gradient(to bottom right, #6c757d 0%, #495057 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 14px; -fx-background-radius: 8; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(108,117,125,0.3), 4, 0, 2, 2);" text="✨ Create Course" />
+                            </children>
                         </VBox>
                     </children>
-                </HBox>
-
-                <!-- Recent Activity Section -->
-                <VBox spacing="15.0" style="-fx-padding: 30 0 0 0;">
-                    <Label style="-fx-text-fill: #2d3436; -fx-font-size: 22px; -fx-font-weight: bold;" text="Recent Activity" />
-                    <VBox spacing="12.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 10; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);">
-                        <Label style="-fx-text-fill: #2d3436; -fx-font-size: 15px;" text="• New student registered: John Doe" />
-                        <Label style="-fx-text-fill: #2d3436; -fx-font-size: 15px;" text="• Course 'Java Programming' updated" />
-                        <Label style="-fx-text-fill: #2d3436; -fx-font-size: 15px;" text="• Payment received from student ID: S00234" />
-                    </VBox>
-                </VBox>
+                </GridPane>
             </children>
         </VBox>
     </children>

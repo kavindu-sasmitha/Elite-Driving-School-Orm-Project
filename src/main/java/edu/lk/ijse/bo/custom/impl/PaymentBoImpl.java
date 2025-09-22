@@ -44,6 +44,5 @@ public class PaymentBoImpl implements PaymentBo {
                 .collect(Collectors.toList());
     }
 
-    // The private mapToDto method has been removed from here
-    // as it is now in the EntityDtoConvertor class.
+
 }

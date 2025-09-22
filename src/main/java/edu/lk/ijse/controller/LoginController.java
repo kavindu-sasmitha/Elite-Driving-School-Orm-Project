@@ -34,13 +34,13 @@ public class LoginController implements Initializable {
     private PasswordField TxtPassword;
 
     @FXML
-    private Button btnButton; // This is your login button
+    private Button btnButton;
 
     private final UserBo userBo = new UserBoImpl();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Populate the role combo box
+
         cmbRole.setItems(FXCollections.observableArrayList("Admin", "Receptionist"));
     }
 
@@ -50,38 +50,37 @@ public class LoginController implements Initializable {
         String username = txtUserName.getText();
         String password = TxtPassword.getText();
 
-        // Basic validation for required fields
+
         if (role == null || username.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "All fields are required.").show();
             return;
         }
 
-        // Create a UserDto from the input fields
+
         UserDto userDto = new UserDto(username, password, role);
 
         try {
-            // Attempt to log in using the UserBo
+
             UserDto loggedInUser = userBo.login(userDto);
 
-            // If login is successful, show a success message and navigate to the dashboard
             new Alert(Alert.AlertType.INFORMATION, "Login Successful!").show();
-            navigateToDashboard(loggedInUser.getRole()); // Pass the role to control access
+            navigateToDashboard(loggedInUser.getRole());
 
         } catch (InvalidCredentialsException e) {
-            // Show an error message if login fails
+
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
     private void navigateToDashboard(String role) {
         try {
-            // Load the dashboard FXML
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoardView.fxml"));
             Parent root = loader.load();
 
-            // Get the controller for the dashboard and pass the role
+
             DashBoardController dashBoardController = loader.getController();
-            dashBoardController.setLoggedInUserRole(role); // Method to set role in DashBoardController
+            dashBoardController.setLoggedInUserRole(role);
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) btnButton.getScene().getWindow();

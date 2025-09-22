@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 
 public class PaymentController implements Initializable {
 
-    // FXML UI Components
+
     @FXML
     private ComboBox<Integer> studentIdCmb;
     @FXML
@@ -62,7 +62,7 @@ public class PaymentController implements Initializable {
     @FXML
     private Label totalPaymentsLbl;
 
-    // Dependencies
+
     private final StudentBo studentBo = new StudentBoImpl();
     private final CourseBo courseBo = new CourseBoImpl();
     private final PaymentBo paymentBo = new PaymentBoImpl();
@@ -97,7 +97,7 @@ public class PaymentController implements Initializable {
         for (PaymentDto dto : payments) {
             StudentDto student = studentBo.getStudentById(dto.getStudentId());
             if (student != null) {
-                // Calculate total fee for the student
+
                 double totalFee = 0.0;
                 if (student.getCourseIds() != null) {
                     for (String courseId : student.getCourseIds()) {
@@ -105,15 +105,15 @@ public class PaymentController implements Initializable {
                     }
                 }
 
-                // Get all payments for this student
+
                 double alreadyPaid = paymentBo.getPaymentsByStudent(student.getStudentId()).stream()
                         .mapToDouble(PaymentDto::getAmount)
                         .sum();
 
-                // Calculate the remaining balance
+
                 double balance = totalFee - alreadyPaid;
 
-                // Determine the status based on the balance
+
                 String status = (balance <= 0) ? "Paid" : "Partially Paid";
 
                 paymentList.add(new PaymentTm(
@@ -137,7 +137,7 @@ public class PaymentController implements Initializable {
             if (student != null) {
                 studentNameTxt.setText(student.getName());
 
-                // Calculate total course fee
+
                 double totalFee = 0.0;
                 if (student.getCourseIds() != null) {
                     for (String courseId : student.getCourseIds()) {
@@ -146,7 +146,6 @@ public class PaymentController implements Initializable {
                 }
                 totalFeeTxt.setText(String.format("%.2f", totalFee));
 
-                // Calculate already paid amount
                 double alreadyPaid = paymentBo.getPaymentsByStudent(selectedId).stream()
                         .mapToDouble(PaymentDto::getAmount)
                         .sum();
@@ -175,7 +174,7 @@ public class PaymentController implements Initializable {
             balanceTxt.setText(String.format("%.2f", newBalance));
 
         } catch (NumberFormatException e) {
-            // Handle the case where a text field is empty
+
             double totalFee = 0.0;
             double alreadyPaid = 0.0;
             try {
@@ -186,7 +185,7 @@ public class PaymentController implements Initializable {
                     alreadyPaid = Double.parseDouble(alreadyPaidTxt.getText());
                 }
             } catch (NumberFormatException ignored) {
-                // Ignore if values are not numbers
+
             }
             balanceTxt.setText(String.format("%.2f", totalFee - alreadyPaid));
         }
@@ -204,28 +203,26 @@ public class PaymentController implements Initializable {
                 return;
             }
 
-            // Check if payment amount exceeds balance
+
             double currentBalance = Double.parseDouble(balanceTxt.getText());
             if (currentBalance < 0) {
                 new Alert(Alert.AlertType.WARNING, "Payment amount exceeds the outstanding balance. Please enter a valid amount.").show();
                 return;
             }
 
-            // Create Payment DTO
+
             PaymentDto paymentDto = new PaymentDto();
             paymentDto.setStudentId(studentId);
             paymentDto.setAmount(paymentAmount);
             paymentDto.setPaymentDate(paymentDate);
-            // Status will be calculated and set in the business logic layer
 
-            // Process payment
             paymentBo.processPayment(paymentDto);
 
             new Alert(Alert.AlertType.INFORMATION, "Payment successfully processed!").show();
 
-            // Reload data and clear form
+
             loadAllPayments();
-            onStudentIdSelected(); // Recalculate and update balances
+            onStudentIdSelected();
             clearPaymentFields();
 
         } catch (NumberFormatException e) {

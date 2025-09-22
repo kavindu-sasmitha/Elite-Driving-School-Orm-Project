@@ -94,7 +94,7 @@ public class LessonController implements Initializable {
     private final StudentBo studentBo = new StudentBoImpl();
     private final ObservableList<LessonTm> lessonList = FXCollections.observableArrayList();
 
-    // Maps to store IDs for combo boxes
+
     private List<InstructorDto> allInstructors;
     private List<CourseDto> allCourses;
     private List<StudentDto> allStudents;
@@ -151,18 +151,18 @@ public class LessonController implements Initializable {
 
     private void loadInstructorsForCourse(String courseName) {
         cmbInstructor.getItems().clear();
-        // Find all instructors whose specialization matches the selected course name
+
         List<InstructorDto> specializedInstructors = allInstructors.stream()
                 .filter(i -> i.getSpecialization() != null && i.getSpecialization().equalsIgnoreCase(courseName))
                 .collect(Collectors.toList());
 
         if (!specializedInstructors.isEmpty()) {
-            // Add all matching instructor names to the combo box
+
             List<String> instructorNames = specializedInstructors.stream()
                     .map(InstructorDto::getName)
                     .collect(Collectors.toList());
             cmbInstructor.getItems().setAll(instructorNames);
-            cmbInstructor.getSelectionModel().selectFirst(); // Select the first one by default
+            cmbInstructor.getSelectionModel().selectFirst();
         } else {
             new Alert(Alert.AlertType.WARNING, "No instructors found for this course.").show();
         }
@@ -203,7 +203,7 @@ public class LessonController implements Initializable {
                     dto.getStatus()
             ));
         }
-        totalLessonsLbl.setText("Total Lessons: " + lessonList.size());
+        //totalLessonsLbl.setText("Total Lessons: " + lessonList.size());
     }
 
     private void loadInitialData() {
@@ -221,25 +221,14 @@ public class LessonController implements Initializable {
         cmbCourse.getItems().setAll(allCourses.stream().map(CourseDto::getCourseName).collect(Collectors.toList()));
         cmbCourse.setValue(lessonTm.getCourseName());
 
-        // When populating from a selected row, we need to ensure the instructor combo box
-        // is updated to reflect instructors for the selected course.
-        // The listener for cmbCourse will handle this if it's triggered again,
-        // but to be safe, we can call it directly or ensure the selected instructor is available.
-        // For simplicity, we'll rely on the listener to populate based on cmbCourse.setValue() above.
-        // However, if the selected lesson's instructor is not the first one for that course,
-        // it might not be selected correctly if not explicitly handled.
-        // A more robust solution would be to find the instructor ID from lessonTm and then
-        // set the value of cmbInstructor.
 
-        // For now, let's just set all possible instructors and then try to select the one from the TM.
+
         cmbInstructor.getItems().setAll(allInstructors.stream().map(InstructorDto::getName).collect(Collectors.toList()));
         cmbInstructor.setValue(lessonTm.getInstructorName());
 
-        // If the selected lesson's instructor is not in the current list (which shouldn't happen if data is consistent),
-        // this might fail. A better approach would be to load instructors based on the course name and then select.
-        // Let's refine this:
-        loadInstructorsForCourse(lessonTm.getCourseName()); // This will populate and select the first instructor
-        cmbInstructor.setValue(lessonTm.getInstructorName()); // Then try to set the specific instructor from the lessonTm
+
+        loadInstructorsForCourse(lessonTm.getCourseName());
+        cmbInstructor.setValue(lessonTm.getInstructorName());
     }
 
     private void clearForm() {

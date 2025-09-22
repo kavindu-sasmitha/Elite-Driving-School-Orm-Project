@@ -16,7 +16,7 @@ public class DashBoardBoImpl implements DashBoardBo {
 
     @Override
     public long getStudentCount() {
-        // This would be more efficient with a dedicated count method in the DAO.
+
         return studentDao.findAll().size();
     }
 

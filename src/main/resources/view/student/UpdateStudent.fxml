@@ -1,166 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to bottom right, #55efc4, #ff7675);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.UpdateStudentController">
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.UpdateStudentController">
     <children>
-        <!-- Header with gradient -->
-        <Rectangle arcHeight="10.0" arcWidth="10.0" height="100.0" width="1000.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0">
+        <!-- Background Decorative Elements -->
+        <Circle fill="#4caf50" layoutX="150.0" layoutY="150.0" opacity="0.08" radius="100.0" />
+        <Circle fill="#ff9800" layoutX="850.0" layoutY="650.0" opacity="0.06" radius="80.0" />
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#2196f3" height="300.0" layoutX="800.0" layoutY="100.0" opacity="0.04" rotate="45.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="150.0" />
+
+        <!-- Top Navigation Bar -->
+        <Rectangle fill="rgba(255,255,255,0.95)" height="80.0" layoutX="0.0" layoutY="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1000.0">
             <effect>
-                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+                <DropShadow blurType="GAUSSIAN" color="#20000000" height="10.0" radius="8.0" spread="0.1" width="0.0" />
             </effect>
         </Rectangle>
 
-        <Label layoutX="360.0" layoutY="25.0" text="UPDATE STUDENT" textFill="#ffffff">
-            <font>
-                <Font name="System Bold" size="32.0" />
-            </font>
-            <style>
-                -fx-background-color: linear-gradient(to right, #ff6b6b, #ffeaa7);
-                -fx-padding: 8 20;
-                -fx-background-radius: 10;
-                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
-            </style>
-        </Label>
-
-        <!-- Main form container -->
-        <VBox layoutX="100.0" layoutY="120.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
-            <padding>
-                <Insets top="30" right="40" bottom="30" left="40" />
-            </padding>
-
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="20.0" spacing="20.0">
             <children>
-                <!-- Two-column form layout -->
-                <GridPane hgap="25" vgap="20">
-                    <columnConstraints>
-                        <ColumnConstraints percentWidth="40" />
-                        <ColumnConstraints percentWidth="60" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                        <RowConstraints prefHeight="45" />
-                    </rowConstraints>
-
+                <Circle fill="linear-gradient(to bottom right, #4caf50 0%, #45a049 100%)" radius="25.0">
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#40000000" height="6.0" radius="4.0" width="0.0" />
+                    </effect>
+                </Circle>
+                <VBox spacing="4.0">
                     <children>
-                        <!-- Registration No -->
-                        <Label text="Registration No *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="0">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtRegistrationNo" editable="false" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-                        <!-- First Name -->
-                        <Label text="First Name *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="1">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtFirstName" prefHeight="40.0" prefWidth="400.0" promptText="Enter First Name" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-
-                        <!-- Last Name -->
-                        <Label text="Last Name *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtLastName" prefHeight="40.0" prefWidth="400.0" promptText="Enter Last Name" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-
-                        <!-- Date of Birth -->
-                        <Label text="Date of Birth *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <DatePicker fx:id="dpDateOfBirth" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" GridPane.rowIndex="3" GridPane.columnIndex="1" />
-
-                        <!-- Contact -->
-                        <Label text="Contact No *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="4">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtContact" prefHeight="40.0" prefWidth="400.0" promptText="07X XXX XXXX" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.rowIndex="4" GridPane.columnIndex="1" />
-
-                        <!-- Email -->
-                        <Label text="Email *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="5">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtEmail" prefHeight="40.0" prefWidth="400.0" promptText="example@domain.com" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.rowIndex="5" GridPane.columnIndex="1" />
-
-                        <!-- Address -->
-                        <Label text="Address *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="6">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="txtAddress" prefHeight="40.0" prefWidth="400.0" promptText="Enter your full address" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" GridPane.rowIndex="6" GridPane.columnIndex="1" />
-
-                        <!-- Registration Date -->
-                        <Label text="Registration Date *" style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" GridPane.rowIndex="7">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <DatePicker fx:id="dpRegistrationDate" editable="false" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+                        <Label style="-fx-text-fill: #37474f; -fx-font-size: 28px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="👤 Update Student" />
+                        <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Modify student information and save changes" />
                     </children>
-                </GridPane>
+                </VBox>
+            </children>
+        </HBox>
 
-                <!-- Action buttons -->
-                <HBox alignment="CENTER_RIGHT" spacing="20" style="-fx-padding: 30 0 0 0;">
+        <!-- Main Form Container -->
+        <VBox layoutX="40.0" layoutY="100.0" prefHeight="650.0" prefWidth="920.0" spacing="0.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 20, 0, 0, 8);">
+            <children>
+                <!-- Form Header -->
+                <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa 0%, #e9ecef 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 24 32;">
                     <children>
-                        <Button onAction="#btnCancelOnAction" text="Cancel" style="-fx-background-color: linear-gradient(to right, #7f8c8d, #636e72); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 12 25; -fx-font-size: 14px;" prefHeight="45.0" prefWidth="120.0">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
-                        <Button onAction="#updateStudent" text="Update" style="-fx-background-color: linear-gradient(to right, #f1c40f, #f39c12); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 12 25; -fx-font-size: 14px;" prefHeight="45.0" prefWidth="140.0">
-                            <effect>
-                                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                            </effect>
-                        </Button>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #495057; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Student Details" />
                     </children>
                 </HBox>
 
-                <!-- Form footer note -->
-                <Label text="* indicates required fields" style="-fx-text-fill: #636e72; -fx-font-style: italic; -fx-padding: 15 0 0 0;">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
+                <!-- Form Content -->
+                <VBox spacing="24.0" style="-fx-padding: 32;">
+                    <children>
+                        <!-- Form Grid -->
+                        <GridPane hgap="24.0" vgap="20.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="NEVER" minWidth="120.0" prefWidth="140.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" prefWidth="720.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+
+                            <children>
+                                <!-- Registration No -->
+                                <VBox spacing="4.0" GridPane.rowIndex="0">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="🆔 Registration No *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Student ID (Auto-generated)" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtRegistrationNo" editable="false" prefHeight="48.0" promptText="STU-XXXXXX" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                <!-- First Name -->
+                                <VBox spacing="4.0" GridPane.rowIndex="1">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="👤 First Name *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Given name as per official documents" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtFirstName" prefHeight="48.0" prefWidth="400.0" promptText="Enter first name" style="-fx-background-color: #fafafa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                <!-- Last Name -->
+                                <VBox spacing="4.0" GridPane.rowIndex="2">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="✏️ Last Name *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Family name as per official documents" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtLastName" prefHeight="48.0" prefWidth="400.0" promptText="Enter last name" style="-fx-background-color: #fafafa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                <!-- Date of Birth -->
+                                <VBox spacing="4.0" GridPane.rowIndex="3">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📅 Date of Birth *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Date of birth as per official documents" />
+                                    </children>
+                                </VBox>
+                                <DatePicker fx:id="dpDateOfBirth" prefHeight="48.0" prefWidth="400.0" style="-fx-background-color: #fafafa; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                <!-- Contact -->
+                                <VBox spacing="4.0" GridPane.rowIndex="4">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📞 Contact No *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Mobile number with country code (+94)" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtContact" prefHeight="48.0" prefWidth="400.0" promptText="07X XXX XXXX" style="-fx-background-color: #fafafa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                <!-- Email -->
+                                <VBox spacing="4.0" GridPane.rowIndex="5">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📧 Email *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Valid email address for notifications" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtEmail" prefHeight="48.0" prefWidth="400.0" promptText="student@domain.com" style="-fx-background-color: #fafafa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                                <!-- Address -->
+                                <VBox spacing="4.0" GridPane.rowIndex="6">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📍 Address *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Full residential address" />
+                                    </children>
+                                </VBox>
+                                <TextField fx:id="txtAddress" prefHeight="48.0" prefWidth="400.0" promptText="123 Main Street, City, Postal Code" style="-fx-background-color: #fafafa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+                                <!-- Registration Date -->
+                                <VBox spacing="4.0" GridPane.rowIndex="7">
+                                    <children>
+                                        <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📋 Registration Date *" />
+                                        <Label style="-fx-text-fill: #868e96; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Date of initial enrollment (Auto-set)" />
+                                    </children>
+                                </VBox>
+                                <DatePicker fx:id="dpRegistrationDate" editable="false" prefHeight="48.0" prefWidth="400.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                            </children>
+                        </GridPane>
+
+                        <!-- Separator -->
+                        <Separator prefWidth="856.0" style="-fx-background-color: #e9ecef; -fx-pref-height: 1;" />
+
+                        <!-- Action Buttons -->
+                        <HBox alignment="CENTER_RIGHT" spacing="16.0" style="-fx-padding: 16 0 0 0;">
+                            <children>
+                            <Region HBox.hgrow="ALWAYS" />
+                                <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" text="❌ Cancel" />
+                                <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateStudent" prefHeight="48.0" prefWidth="140.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 8, 0, 2, 4);" text="💾 Update Student" />
+                            </children>
+                        </HBox>
+
+                        <!-- Form Footer -->
+                        <HBox alignment="CENTER" spacing="8.0" style="-fx-padding: 20 0 0 0;">
+                            <children>
+                                <Circle fill="#ff9800" radius="4.0" />
+                                <Label style="-fx-text-fill: #adb5bd; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Required fields are marked with *" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label style="-fx-text-fill: #28a745; -fx-font-size: 12px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="✓ Changes will be saved immediately" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
             </children>
         </VBox>
-
-        <!-- Status bar -->
-        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1000.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
-            <children>
-                <Label text="Ready to update student details" style="-fx-text-fill: #ffffff; -fx-background-color: #00b894; -fx-background-radius: 6; -fx-padding: 5 15;">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-            </children>
-        </HBox>
     </children>
 </AnchorPane>

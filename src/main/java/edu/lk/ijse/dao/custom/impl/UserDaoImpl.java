@@ -43,10 +43,10 @@ public class UserDaoImpl implements UserDao {
     public Optional<User> findByUsername(String username) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query<User> query = session.createQuery("FROM users WHERE username = :username", User.class);
-            query.setParameter("username", username);
+            query.setParameter("username",username);
             return query.uniqueResultOptional();
         } catch (Exception e) {
-            e.printStackTrace(); // Replace with proper logging in production
+            e.printStackTrace();
             return Optional.empty();
         }
     }

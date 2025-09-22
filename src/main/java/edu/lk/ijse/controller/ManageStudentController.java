@@ -89,7 +89,7 @@ public class ManageStudentController implements Initializable {
         }
     }
 
-    // New or modified method
+
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
         StudentDto selectedStudent = tblStudents.getSelectionModel().getSelectedItem();
@@ -133,11 +133,10 @@ public class ManageStudentController implements Initializable {
         if (result.isPresent() && result.get() == ButtonType.YES) {
             studentBo.deleteStudent(selectedStudent.getStudentId());
             new Alert(Alert.AlertType.INFORMATION, "Student deleted successfully!").show();
-            loadStudents(); // Refresh the table
+            loadStudents();
         }
     }
 
-    // No change
     public void refreshTable() {
         loadStudents();
     }
@@ -145,5 +144,8 @@ public class ManageStudentController implements Initializable {
     @FXML
     void btnSearchOnAction(ActionEvent event) {
         new Alert(Alert.AlertType.INFORMATION, "Search functionality is not implemented yet.").show();
+    }
+
+    public void btnClearSearch(ActionEvent actionEvent) {
     }
 }

@@ -125,7 +125,7 @@ public class ManageInstructorController implements Initializable {
     @FXML
     void btnSaveOnAction(ActionEvent event) {
         try {
-            // ID is set to null because the database will generate it automatically
+
             InstructorDto instructorDto = new InstructorDto(
                     null,
                     txtName.getText(),

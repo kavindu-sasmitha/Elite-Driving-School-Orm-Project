@@ -30,7 +30,7 @@ public class LessonBoImpl implements LessonBo {
 
     @Override
     public void scheduleLesson(LessonDto lessonDto) throws SchedulingConflictException {
-        // Find entities from DTO IDs
+
         Student student = studentDao.findById(lessonDto.getStudentId())
                 .orElseThrow(() -> new SchedulingConflictException("Student not found."));
         Instructor instructor = instructorDao.findById(lessonDto.getInstructorId())
@@ -38,14 +38,14 @@ public class LessonBoImpl implements LessonBo {
         Course course = courseDao.findById(lessonDto.getCourseId())
                 .orElseThrow(() -> new SchedulingConflictException("Course not found."));
 
-        // Check for scheduling conflicts
+
         if (lessonDao.isInstructorBusy(instructor.getInstructorId(), lessonDto.getScheduledTime(), course.getDuration())) {
             throw new SchedulingConflictException("The selected instructor is busy at the scheduled time.");
         }
 
-        // Create and save the new lesson using the convertor
+
         Lesson lesson = convertor.toLessonEntity(lessonDto, student, instructor, course);
-        lesson.setStatus("SCHEDULED"); // Set status here as it's not in the DTO
+        lesson.setStatus("SCHEDULED");
 
         lessonDao.save(lesson);
     }
@@ -55,7 +55,7 @@ public class LessonBoImpl implements LessonBo {
         Lesson lesson = lessonDao.findById(lessonId)
                 .orElseThrow(() -> new SchedulingConflictException("Lesson not found to reschedule."));
 
-        // Find entities from DTO IDs
+
         Student student = studentDao.findById(lessonDto.getStudentId())
                 .orElseThrow(() -> new SchedulingConflictException("Student not found."));
         Instructor instructor = instructorDao.findById(lessonDto.getInstructorId())
@@ -63,14 +63,14 @@ public class LessonBoImpl implements LessonBo {
         Course course = courseDao.findById(lessonDto.getCourseId())
                 .orElseThrow(() -> new SchedulingConflictException("Course not found."));
 
-        // Check for scheduling conflicts, excluding the current lesson being updated
+
         if (lessonDao.isInstructorBusy(instructor.getInstructorId(), lessonDto.getScheduledTime(), course.getDuration(), lessonId)) {
             throw new SchedulingConflictException("The selected instructor is busy at the new scheduled time.");
         }
 
-        // Update the existing lesson entity using the convertor
+
         Lesson updatedLesson = convertor.toLessonEntity(lessonDto, student, instructor, course);
-        updatedLesson.setLessonId(lesson.getLessonId()); // Ensure the ID is maintained
+        updatedLesson.setLessonId(lesson.getLessonId());
         updatedLesson.setStatus("SCHEDULEED");
 
         lessonDao.update(updatedLesson);

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -10,248 +9,256 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to bottom right, #a29bfe, #74b9ff);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.LessonController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.lk.ijse.controller.LessonController">
     <children>
-        <Rectangle arcHeight="10.0" arcWidth="10.0" fill="linear-gradient(to bottom, #2d3436, #1e272e)" height="100.0" stroke="#34495e" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
+        <!-- Background Decorative Elements -->
+        <Circle fill="#4caf50" layoutX="100.0" layoutY="150.0" opacity="0.06" radius="100.0" />
+        <Circle fill="#ff9800" layoutX="1100.0" layoutY="650.0" opacity="0.05" radius="80.0" />
+        <Rectangle arcHeight="0.0" arcWidth="0.0" fill="#2196f3" height="280.0" layoutX="950.0" layoutY="50.0" opacity="0.04" rotate="45.0" stroke="transparent" strokeType="INSIDE" strokeWidth="0.0" width="140.0" />
+
+        <!-- Top Navigation Bar -->
+        <Rectangle fill="rgba(255,255,255,0.95)" height="80.0" layoutX="0.0" layoutY="0.0" strokeType="INSIDE" strokeWidth="0.0" width="1200.0">
             <effect>
-                <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.3)" height="8.0" radius="6.0" width="0.0" />
+                <DropShadow blurType="GAUSSIAN" color="#20000000" height="10.0" radius="8.0" spread="0.1" width="0.0" />
             </effect>
         </Rectangle>
 
-        <Label layoutX="450.0" layoutY="25.0" text="LESSON MANAGEMENT" textFill="#ffffff">
-            <font>
-                <Font name="System Bold" size="32.0" />
-            </font>
-            <style>
-                -fx-background-color: linear-gradient(to right, #ff7675, #fdcb6e);
-                -fx-padding: 8 20;
-                -fx-background-radius: 10;
-                -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
-            </style>
-        </Label>
-
-        <VBox layoutX="50.0" layoutY="120.0" prefHeight="600.0" prefWidth="1100.0" spacing="30.0">
+        <!-- Header Section -->
+        <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="20.0" spacing="20.0">
             <children>
-                <VBox prefWidth="1100.0" spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dfe6e9; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+                <Circle fill="linear-gradient(to bottom right, #9c27b0 0%, #7b1fa2 100%)" radius="25.0">
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN" color="#40000000" height="6.0" radius="4.0" width="0.0" />
+                    </effect>
+                </Circle>
+                <VBox spacing="4.0">
                     <children>
-                        <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 22px;" text="Lesson Details">
-                            <font>
-                                <Font name="System Bold" size="22.0" />
-                            </font>
-                        </Label>
+                        <Label style="-fx-text-fill: #37474f; -fx-font-size: 28px; -fx-font-weight: 700; -fx-font-family: 'Segoe UI';" text="📚 Lesson Management" />
+                        <Label style="-fx-text-fill: #78909c; -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Schedule and manage driving lessons" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
 
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
+        <!-- Main Content Area -->
+        <VBox layoutX="30.0" layoutY="100.0" prefHeight="650.0" prefWidth="1140.0" spacing="24.0">
+            <children>
+                <!-- Statistics Dashboard -->
+                <HBox spacing="16.0" />
+
+                <!-- Lesson Form -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Form Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #9c27b0 0%, #7b1fa2 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
                             <children>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Lesson ID">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="txtId" prefHeight="40.0" prefWidth="250.0" promptText="Auto-generated" style="-fx-background-color: #dfe6e9; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" editable="false" />
-                                </VBox>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Student ID *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="txtStudentId" prefHeight="40.0" prefWidth="250.0" promptText="Enter Student ID" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Course *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <ComboBox fx:id="cmbCourse" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
-                                </VBox>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+
+                                    </image>
+                                </ImageView>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Lesson Details" />
+                                <Region HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
 
-                        <HBox alignment="CENTER_LEFT" spacing="30.0">
+                        <!-- Form Content -->
+                        <VBox spacing="24.0" style="-fx-padding: 32;">
                             <children>
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Instructor *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <ComboBox fx:id="cmbInstructor" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
-                                </VBox>
+                                <!-- First Row -->
+                                <HBox spacing="24.0">
+                                    <children>
+                                        <VBox prefWidth="200.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="🆔 Lesson ID" />
+                                            <TextField fx:id="txtId" editable="false" prefHeight="48.0" prefWidth="200.0" promptText="Auto-generated" style="-fx-background-color: #f8f9fa; -fx-text-fill: #495057; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox prefWidth="300.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="🆔 Student ID *" />
+                                            <TextField fx:id="txtStudentId" prefHeight="48.0" prefWidth="300.0" promptText="Enter Student ID" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox prefWidth="300.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📚 Course *" />
+                                            <ComboBox fx:id="cmbCourse" prefHeight="48.0" prefWidth="300.0" promptText="Select course" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
 
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Date *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <DatePicker fx:id="DatePiker" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-font-size: 14px;" />
-                                </VBox>
+                                <!-- Second Row -->
+                                <HBox spacing="24.0">
+                                    <children>
+                                        <VBox prefWidth="300.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="👨‍🏫 Instructor *" />
+                                            <ComboBox fx:id="cmbInstructor" prefHeight="48.0" prefWidth="300.0" promptText="Select instructor" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox prefWidth="200.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="📅 Date *" />
+                                            <DatePicker fx:id="DatePiker" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #fafafa; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                        <VBox prefWidth="200.0" spacing="8.0">
+                                            <Label style="-fx-text-fill: #495057; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI';" text="⏰ Start Time *" />
+                                            <TextField fx:id="txtStartTime" prefHeight="48.0" prefWidth="200.0" promptText="HH:MM (24-hour format)" style="-fx-background-color: #fafafa; -fx-text-fill: #37474f; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-padding: 0 16; -fx-font-size: 15px; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
 
-                                <VBox prefWidth="250.0" spacing="8.0">
-                                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold;" text="Start Time *">
-                                        <font>
-                                            <Font size="16.0" />
-                                        </font>
-                                    </Label>
-                                    <TextField fx:id="txtStartTime" prefHeight="40.0" prefWidth="250.0" promptText="HH:MM (24-hour format)" style="-fx-background-color: #f1f3f5; -fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #b2bec3; -fx-padding: 0 12; -fx-font-size: 14px;" />
-                                </VBox>
+                                <!-- Action Buttons -->
+                                <HBox alignment="CENTER" spacing="16.0" style="-fx-padding: 16 0 0 0;">
+                                    <children>
+                                        <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom right, #4caf50 0%, #45a049 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(76,175,80,0.3), 12, 0, 2, 6);" text="➕ Add Lesson" />
+                                        <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom right, #2196f3 0%, #1976d2 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 12, 0, 2, 6);" text="✏️ Update" />
+                                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to bottom right, #f44336 0%, #d32f2f 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(244,67,52,0.3), 12, 0, 2, 6);" text="🗑️ Cancel" />
+                                        <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 24; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 24; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" text="🔄 Reset" />
+                                    </children>
+                                </HBox>
                             </children>
-                        </HBox>
-
-                        <HBox alignment="CENTER" spacing="20.0" style="-fx-padding: 15 0 0 0;">
-                            <children>
-                                <Button fx:id="btnAdd" onAction="#btnSaveOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #2ecc71, #27ae60); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Add">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="btnUpdate" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #f1c40f, #f39c12); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Update">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="btnDelete" onAction="#btnDeleteOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #e74c3c, #c0392b); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Cancel">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                                <Button fx:id="btnReset" onAction="#btnResetOnAction" prefHeight="45.0" prefWidth="120.0" style="-fx-background-color: linear-gradient(to right, #7f8c8d, #636e72); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 10 25; -fx-font-size: 14px;" text="Reset">
-                                    <effect>
-                                        <DropShadow blurType="GAUSSIAN" color="rgba(0,0,0,0.2)" height="5.0" radius="4.0" width="0.0" />
-                                    </effect>
-                                </Button>
-                            </children>
-                        </HBox>
+                        </VBox>
                     </children>
                 </VBox>
 
-                <VBox prefWidth="1100.0" spacing="15.0">
-                    <Label style="-fx-text-fill: #2d3436; -fx-font-weight: bold; -fx-font-size: 22px;" text="Scheduled Lessons">
-                        <font>
-                            <Font name="System Bold" size="22.0" />
-                        </font>
-                    </Label>
+                <!-- Lesson Records Table -->
+                <VBox spacing="0.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 16, 0, 0, 4);">
+                    <children>
+                        <!-- Table Header -->
+                        <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #9c27b0 0%, #7b1fa2 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 20 24;">
+                            <children>
+                                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
 
-                    <TableView fx:id="tblLesson" prefHeight="300.0" prefWidth="1100.0" style="-fx-background-color: #f1f3f5; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #b2bec3;">
-                        <columns>
-                            <TableColumn fx:id="colID" prefWidth="100.0" text="Lesson ID">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="lessonId" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="colCourse" prefWidth="200.0" text="Course">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="courseName" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="colInstructor" prefWidth="150.0" text="Instructor">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="instructorName" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="colDate" prefWidth="120.0" text="Date">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="date" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="colStartTime" prefWidth="120.0" text="Start Time">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="scheduledTime" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                            <TableColumn fx:id="colStatus" prefWidth="150.0" text="Status">
-                                <cellValueFactory>
-                                    <PropertyValueFactory property="status" />
-                                </cellValueFactory>
-                                <style>
-                                    -fx-alignment: CENTER-LEFT;
-                                    -fx-text-fill: #2d3436;
-                                    -fx-background-color: #74b9ff;
-                                    -fx-font-weight: bold;
-                                    -fx-font-size: 14px;
-                                </style>
-                            </TableColumn>
-                        </columns>
-                        <style>
-                            -fx-control-inner-background: #ffffff;
-                            -fx-accent: #0984e3;
-                            -fx-selection-bar: #55efc4;
-                            -fx-selection-bar-text: #2d3436;
-                            -fx-font-size: 14px;
-                        </style>
-                    </TableView>
+                                    </image>
+                                </ImageView>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Scheduled Lessons" />
+                                <Region />
+                                <HBox spacing="12.0">
+                                    <children>
+                                        <Label style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 14px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="Total Records:" />
+                                        <Label style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(255,255,255,0.2); -fx-background-radius: 20; -fx-padding: 6 16;" text="0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </HBox>
+
+                        <!-- Lesson Table -->
+                        <TableView fx:id="tblLesson" prefHeight="280.0" style="-fx-background-color: transparent; -fx-table-cell-border-color: #f0f0f0; -fx-font-family: 'Segoe UI'; -fx-font-size: 14px;">
+                            <columns>
+                                <TableColumn fx:id="colID" minWidth="100.0" prefWidth="120.0" text="🆔 Lesson ID">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="lessonId" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colCourse" minWidth="200.0" prefWidth="220.0" text="📚 Course">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="courseName" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER_LEFT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colInstructor" minWidth="180.0" prefWidth="200.0" text="👨‍🏫 Instructor">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="instructorName" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER_LEFT;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colDate" minWidth="140.0" prefWidth="160.0" text="📅 Date">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="date" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colStartTime" minWidth="140.0" prefWidth="160.0" text="⏰ Start Time">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="scheduledTime" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                                <TableColumn fx:id="colStatus" minWidth="140.0" prefWidth="160.0" text="✅ Status">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="status" />
+                                    </cellValueFactory>
+                                    <style>
+                                        -fx-alignment: CENTER;
+                                        -fx-background-color: linear-gradient(to bottom, rgba(156,39,176,0.1), rgba(156,39,176,0.05));
+                                        -fx-text-fill: #4a148c;
+                                        -fx-font-weight: 600;
+                                        -fx-font-size: 13px;
+                                    </style>
+                                </TableColumn>
+                            </columns>
+                            <style>
+                                -fx-control-inner-background: white;
+                                -fx-accent: linear-gradient(to bottom right, #9c27b0 0%, #7b1fa2 100%);
+                                -fx-selection-bar: linear-gradient(to bottom right, #f3e5f5 0%, #e1bee7 100%);
+                                -fx-selection-bar-text: #4a148c;
+                                -fx-table-cell-border-color: #f5f5f5;
+                                -fx-background-color: transparent;
+                            </style>
+                        </TableView>
+                    </children>
                 </VBox>
             </children>
         </VBox>
 
-        <HBox alignment="CENTER_LEFT" layoutX="0.0" layoutY="750.0" prefHeight="50.0" prefWidth="1200.0" style="-fx-background-color: linear-gradient(to right, #2d3436, #636e72); -fx-padding: 0 25;">
+        <!-- Status Bar -->
+        <HBox alignment="BASELINE_CENTER" layoutX="0.0" layoutY="760.0" prefHeight="40.0" prefWidth="1200.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-padding: 0 24; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, -2);">
             <children>
-                <Label text="Status: Ready" textFill="#ffffff">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #00b894;
-                        -fx-background-radius: 6;
-                    </style>
-                </Label>
-                <Label fx:id="totalLessonsLbl" text="Total Lessons: 0" textAlignment="RIGHT" textFill="#ffffff" HBox.hgrow="ALWAYS">
-                    <font>
-                        <Font name="System" size="14.0" />
-                    </font>
-                    <style>
-                        -fx-padding: 5 15;
-                        -fx-background-color: #0984e3;
-                        -fx-background-radius: 6;
-                    </style>
-                    <HBox.margin>
-                        <Insets right="25.0" />
-                    </HBox.margin>
-                </Label>
+                <HBox spacing="12.0">
+                    <children>
+                        <Circle fill="#4caf50" radius="6.0" />
+                        <VBox spacing="2.0">
+                            <children>
+                                <Label style="-fx-text-fill: #1a1a1a; -fx-font-size: 14px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI';" text="Status: Ready" />
+                                <Label style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-font-weight: 400; -fx-font-family: 'Segoe UI';" text="System operational - Last sync: 2 minutes ago" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox spacing="16.0">
+                    <children>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                        <Label style="-fx-text-fill: #666666; -fx-font-size: 14px; -fx-font-weight: 500; -fx-font-family: 'Segoe UI'; -fx-background-color: rgba(156, 39, 176, 0.1); -fx-background-radius: 16; -fx-padding: 4 12;" text="Total Lessons: 0" />
+                    </children>
+                </HBox>
             </children>
         </HBox>
     </children>

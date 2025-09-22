@@ -38,7 +38,7 @@ public class UserRegistrationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Populate the role combo box
+
         cmbRole.setItems(FXCollections.observableArrayList("Admin", "Receptionist"));
     }
 
@@ -48,7 +48,7 @@ public class UserRegistrationController implements Initializable {
         String password = txtPassword.getText();
         String role = cmbRole.getValue();
 
-        // Validate input fields
+
         if (username.isEmpty() || password.isEmpty() || role == null) {
             new Alert(Alert.AlertType.ERROR, "Please fill in all fields.").show();
             return;
@@ -57,16 +57,16 @@ public class UserRegistrationController implements Initializable {
         UserDto userDto = new UserDto(username, password, role);
 
         try {
-            // Register the user
+
             userBo.registerUser(userDto);
             new Alert(Alert.AlertType.INFORMATION, "User registered successfully!").show();
-            // Optionally clear fields or close the window after successful registration
+
             clearFields();
             closeWindow();
         } catch (Exception e) {
-            // Handle potential exceptions during registration (e.g., duplicate username)
+
             new Alert(Alert.AlertType.ERROR, "Error registering user: " + e.getMessage()).show();
-            e.printStackTrace(); // For debugging
+            e.printStackTrace();
         }
     }
 

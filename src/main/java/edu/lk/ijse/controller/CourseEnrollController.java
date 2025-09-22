@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class CourseEnrollController implements Initializable {
 
-    // --- FXML UI Components ---
+
     @FXML
     private ComboBox<CourseDto> selectCourseCmb;
     @FXML
@@ -48,7 +48,7 @@ public class CourseEnrollController implements Initializable {
     @FXML
     private javafx.scene.control.Label enrollmentCountLbl;
 
-    // --- Data and Dependencies ---
+
     private final CourseBo courseBo = new CourseBoImpl();
     private final StudentBo studentBo = new StudentBoImpl();
     private final ObservableList<EnrollmentTm> enrollmentList = FXCollections.observableArrayList();
@@ -108,7 +108,7 @@ public class CourseEnrollController implements Initializable {
     }
 
     private void updateEnrollmentCount() {
-        enrollmentCountLbl.setText("Total Enrollments: " + enrollmentList.size());
+        //enrollmentCountLbl.setText("Total Enrollments: " + enrollmentList.size());
     }
 
     @FXML
@@ -149,28 +149,28 @@ public class CourseEnrollController implements Initializable {
                 return;
             }
 
-            // Get student from DB
+
             StudentDto studentDto = studentBo.getStudentById(studentId);
             if (studentDto == null) {
                 new Alert(Alert.AlertType.ERROR, "Student not found with this ID.").show();
                 return;
             }
 
-            // Check if student is already enrolled in this course
+
             if (studentDto.getCourseIds() != null && studentDto.getCourseIds().contains(selectedCourse.getCourseId())) {
                 new Alert(Alert.AlertType.WARNING, "Student is already enrolled in this course.").show();
                 return;
             }
 
-            // Add new course to student's courses
+
             studentDto.getCourseIds().add(selectedCourse.getCourseId());
 
-            // Update student in database
+
             studentBo.updateStudent(studentDto);
 
             new Alert(Alert.AlertType.INFORMATION, "Enrollment successful!").show();
 
-            // Reload table data and clear form
+
             loadAllEnrolledStudents();
             clearForm();
 

@@ -52,13 +52,13 @@ public class CourseDetailsController implements Initializable {
             if (student.getCourseIds() != null && !student.getCourseIds().isEmpty()) {
                 boolean isFirstCourse = true;
                 for (String courseId : student.getCourseIds()) {
-                    // Find course name from CourseBo, since DTO only has ID
+
                     String courseName = studentBo.getCourseNameById(courseId);
                     if (isFirstCourse) {
                         tmList.add(new CourseDetailsTm(student.getName(), courseName));
                         isFirstCourse = false;
                     } else {
-                        tmList.add(new CourseDetailsTm("", courseName)); // Keep student name empty for subsequent courses
+                        tmList.add(new CourseDetailsTm("", courseName));
                     }
                 }
             } else {

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserDto {
     private String username;
-    private String password; // Plain text from UI, hashed before storage
+    private String password;
     private String role;
 }
