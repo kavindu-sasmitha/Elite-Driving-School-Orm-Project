@@ -52,7 +52,7 @@
         <VBox layoutX="40.0" layoutY="100.0" prefHeight="650.0" prefWidth="920.0" spacing="0.0" style="-fx-background-color: rgba(255,255,255,0.95); -fx-background-radius: 16; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 20, 0, 0, 8);">
             <children>
                 <!-- Form Header -->
-                <HBox alignment="CENTER_LEFT" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa 0%, #e9ecef 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 24 32;">
+                <HBox alignment="CENTER_LEFT" spacing="79.0" style="-fx-background-color: linear-gradient(to bottom right, #f8f9fa 0%, #e9ecef 100%); -fx-background-radius: 16 16 0 0; -fx-padding: 24 32;">
                     <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -60,11 +60,13 @@
                             </image>
                         </ImageView>
                         <Label style="-fx-text-fill: #495057; -fx-font-size: 20px; -fx-font-weight: 600; -fx-font-family: 'Segoe UI'; -fx-padding: 0 0 0 12;" text="Student Information" />
+                          <Button fx:id="btnRegisterOnAction" mnemonicParsing="false" onAction="#registerStudent" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom right, #2ecc71 0%, #27ae60 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.3), 8, 0, 2, 4);" text="➕ Register Student" />
+                          <Button fx:id="btnResetOnAction" mnemonicParsing="false" onAction="#btnresetOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" text="🔄 Reset Form" />
                     </children>
                 </HBox>
 
                 <!-- Form Content -->
-                <VBox spacing="24.0" style="-fx-padding: 32;">
+                <VBox prefHeight="793.0" prefWidth="887.0" spacing="24.0" style="-fx-padding: 32;">
                     <children>
                         <!-- Progress Indicator -->
                         <HBox alignment="CENTER" spacing="8.0">
@@ -172,12 +174,7 @@
                         <Separator prefWidth="856.0" style="-fx-background-color: #e9ecef; -fx-pref-height: 1;" />
 
                         <!-- Action Buttons -->
-                        <HBox alignment="CENTER_RIGHT" spacing="16.0" style="-fx-padding: 16 0 0 0;">
-                            <children>
-                                <Button fx:id="btnResetOnAction" mnemonicParsing="false" onAction="#btnresetOnAction" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #f8f9fa; -fx-text-fill: #6c757d; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-border-color: #dee2e6; -fx-border-width: 1; -fx-border-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, #10000000, 1, 0, 0, 1);" text="🔄 Reset Form" />
-                                <Button fx:id="btnRegisterOnAction" mnemonicParsing="false" onAction="#registerStudent" prefHeight="48.0" prefWidth="160.0" style="-fx-background-color: linear-gradient(to bottom right, #2ecc71 0%, #27ae60 100%); -fx-text-fill: white; -fx-font-weight: 600; -fx-font-size: 15px; -fx-background-radius: 12; -fx-cursor: hand; -fx-font-family: 'Segoe UI'; -fx-effect: dropshadow(gaussian, rgba(46,204,113,0.3), 8, 0, 2, 4);" text="➕ Register Student" />
-                            </children>
-                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="16.0" style="-fx-padding: 16 0 0 0;" />
 
                         <!-- Form Footer -->
                         <HBox alignment="CENTER" spacing="8.0" style="-fx-padding: 20 0 0 0;">

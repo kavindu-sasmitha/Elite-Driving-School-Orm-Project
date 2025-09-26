@@ -43,8 +43,41 @@ public class RegisterStudentController {
     @FXML
     void registerStudent(ActionEvent event) {
 
+
         if (txtFirstName.getText().isEmpty() || txtLastName.getText().isEmpty() || txtAddress.getText().isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "Please fill in all required fields.").show();
+            return;
+        }
+
+
+        if (!txtFirstName.getText().matches("[a-zA-Z ]+")) {
+            new Alert(Alert.AlertType.ERROR, "First name must contain only letters and spaces.").show();
+            return;
+        }
+
+
+        if (!txtLastName.getText().matches("[a-zA-Z ]+")) {
+            new Alert(Alert.AlertType.ERROR, "Last name must contain only letters and spaces.").show();
+            return;
+        }
+
+
+        String contact = txtContact.getText().trim();
+        if (!contact.isEmpty() && !contact.matches("\\+?\\d{10,12}")) {
+            new Alert(Alert.AlertType.ERROR, "Contact number must be 10-12 digits (e.g., +941234567890 or 1234567890).").show();
+            return;
+        }
+
+
+        String email = txtEmail.getText().trim();
+        if (!email.isEmpty() && !email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid email format.").show();
+            return;
+        }
+
+
+        if (!txtAddress.getText().matches("[a-zA-Z0-9,./ -]+")) {
+            new Alert(Alert.AlertType.ERROR, "Address must contain valid characters (letters, numbers, spaces, commas, periods, or hyphens).").show();
             return;
         }
 
@@ -59,11 +92,9 @@ public class RegisterStudentController {
             studentBo.registerStudent(studentDto);
             new Alert(Alert.AlertType.INFORMATION, "Student registered successfully!").show();
 
-
             if (manageStudentController != null) {
                 manageStudentController.refreshTable();
             }
-
 
             Stage stage = (Stage) btnRegisterOnAction.getScene().getWindow();
             stage.close();
